@@ -22,4 +22,21 @@ public class InventaireService {
     public Egg saveEgg(Egg egg) {
         return eggRepository.save(egg);
     }
+
+    public List<Egg> getAllEggs() {
+        return (List<Egg>) eggRepository.findAll();
+    }
+
+    public List<Pokemon> getAllPokemons() {
+        return (List<Pokemon>) pokemonRepository.findAll();
+    }
+
+    public void deletePokemon(Integer id) {
+        pokemonRepository.deleteById(id);
+    }
+
+    public void deleteEgg(Integer id) {
+        eggRepository.deleteById(id);
+    }
+
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class InventaireController {
     @Autowired
     private InventaireService inventaireService;
-    @PostMapping("/add_pokemon_to_inventaire")
+    @PostMapping("/add_pokemon")
     public @ResponseBody Pokemon addPokemon(
             @RequestParam Integer level,
             @RequestParam String name) {
@@ -19,7 +19,7 @@ public class InventaireController {
         pokemon.setLevel(level);
         return inventaireService.savePokemon(pokemon);
     }
-    @PostMapping("/add_egg_to_inventaire")
+    @PostMapping("/add_egg")
     public @ResponseBody Egg addEgg(
             @RequestParam Integer hatchingTime,
             @RequestParam String name) {
@@ -28,12 +28,33 @@ public class InventaireController {
         egg.setHatchingTime(hatchingTime);
         return inventaireService.saveEgg(egg);
     }
-    // @GetMapping("/inventaire")
-    // public @ResponseBody Iterable<Inventaire> getAllInventaire() {
-        // This returns a JSON or XML with the users
-        // return inventaireService.getAllInventaire();
-    // }
-}
 
-    //@PostMapping("/eggs/")
+    @GetMapping("/pokemons")
+    public @ResponseBody Iterable<Pokemon> getAllPokemon() {
+        // This returns a JSON or XML with the users
+        return inventaireService.getAllPokemons();
+    }
+
+    @GetMapping("/eggs")
+    public @ResponseBody Iterable<Egg> getAllEggs() {
+        // This returns a JSON or XML with the users
+        return inventaireService.getAllEggs();
+    }
+
+    @DeleteMapping("/delete_pokemon")
+    public @ResponseBody String deletePokemon(
+            @RequestParam Integer id) {
+        // This returns a JSON or XML with the users
+        inventaireService.deletePokemon(id);
+        return "OK";
+    }
+
+    @DeleteMapping("/delete_egg")
+    public @ResponseBody String deleteEgg(
+            @RequestParam Integer id) {
+        // This returns a JSON or XML with the users
+        inventaireService.deleteEgg(id);
+        return "OK";
+    }
+}
 
