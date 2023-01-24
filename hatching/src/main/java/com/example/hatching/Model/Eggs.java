@@ -2,6 +2,8 @@ package com.example.hatching.Model;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 public class Eggs {
 
@@ -11,6 +13,14 @@ public class Eggs {
     private Integer id;
     private String name;
     private Integer hatchingTime;
+    private Date dateDeposit;
+    public Date getDateDeposit() {
+        return dateDeposit;
+    }
+    public void setDateDeposit(Date dateDeposit) {
+        this.dateDeposit = dateDeposit;
+    }
+
     public void setHatchingTime(Integer hatchingTime) {
         this.hatchingTime = hatchingTime;
     }

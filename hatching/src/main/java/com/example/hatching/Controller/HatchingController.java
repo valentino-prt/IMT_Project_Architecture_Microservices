@@ -6,7 +6,7 @@ import com.example.hatching.Service.HatchingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Date;
 
 @RestController()
 public class HatchingController {
@@ -21,10 +21,11 @@ public class HatchingController {
             @RequestParam Integer hatchingTime) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-
         final Eggs egg = new Eggs();
         egg.setName(name);
         egg.setHatchingTime(hatchingTime);
+        Date date = new Date();
+        egg.setDateDeposit(date);
         return hatchingService.save(egg);
     }
     @GetMapping("/egg")
