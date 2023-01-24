@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 public class Eggs {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "egg_generator")
     @SequenceGenerator(name = "egg_seq", sequenceName = "egg_seq", allocationSize = 1)
@@ -22,4 +23,11 @@ public class Eggs {
     public Integer getHatchingTime() {
         return hatchingTime;
     }
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 }
