@@ -18,4 +18,15 @@ public class DresseurService {
     public List<Dresseur> getAllUsers() {
         return (List<Dresseur>) dresserRepository.findAll();
     }
+
+    public void deleteDresseur(Integer id) {
+        dresserRepository.deleteById(id);
+    }
+
+    /*public Dresseur changeGold(Integer id, Integer amout) {
+        Dresseur dresseur = dresserRepository.findById(id);
+        dresseur.setGold(dresseur.getGold() + amout);
+        dresserRepository.save(dresseur);
+        return dresseur;
+    }*/
 }
