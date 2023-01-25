@@ -25,7 +25,7 @@ public class Egg {
         this.hatchingTime = hatchingTime;
     }
     public void setName(String name) {
-        this.name = name;
+        this.name = "Oeuf de " + name;
     }
     public String getName() {
         return name;
