@@ -1,8 +1,8 @@
-package com.example.inventaire.Controller;
+package com.example.inventaire.web.Controller;
 
-import com.example.inventaire.Model.Pokemon;
-import com.example.inventaire.Model.Egg;
-import com.example.inventaire.Service.InventaireService;
+import com.example.inventaire.web.Model.Pokemon;
+import com.example.inventaire.web.Model.Egg;
+import com.example.inventaire.web.Service.InventaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package com.example.inventaire.Model;
+package com.example.inventaire.web.Model;
 
 import jakarta.persistence.*;
 

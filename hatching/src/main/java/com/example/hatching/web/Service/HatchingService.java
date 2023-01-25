@@ -1,40 +1,51 @@
-package com.example.hatching.Service;
+package com.example.hatching.web.Service;
 
-import com.example.hatching.Model.Eggs;
-import com.example.hatching.Repository.HatchingRepository;
+import com.example.hatching.queue.Sender;
+import com.example.hatching.web.Repository.HatchingRepository;
+import com.example.hatching.web.Model.Egg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.Date;
 import java.util.List;
 @Service
 public class HatchingService {
     @Autowired
     private HatchingRepository hatchingRepository;
+    @Autowired
+    private Sender sender;
 
-    public Eggs save(Eggs egg) {
+    public Egg save(Egg egg) {
         return hatchingRepository.save(egg);
     }
 
-    public List<Eggs> getAllUsers() {
-        return (List<Eggs>) hatchingRepository.findAll();
+    public List<Egg> getAllEggs() {
+        return (List<Egg>) hatchingRepository.findAll();
     }
+
+    public void sendMessage(Egg egg) {
+        this.sender.send(egg);
+    }
+
 
     @Scheduled(fixedRate = 5000)
     public void reportCurrentTime() {
-        List<Eggs> oeuf = (List<Eggs>) hatchingRepository.findAll();
+        List<Egg> oeuf = (List<Egg>) hatchingRepository.findAll();
 
-        for(Eggs egg : oeuf){
+        for(Egg egg : oeuf){
             int minute = egg.getDateDeposit().getMinutes();
             int newMinute = egg.getHatchingTime()/2 + minute;
             Date evolution = egg.getDateDeposit();
             evolution.setMinutes(newMinute);
             Date dateNow = new Date();
-            System.out.println("l'oeuf" + egg.getName() + " doit éclore à : "+ evolution +" soit dans : " + (evolution.getTime() - dateNow.getTime()));
+            System.out.println("l'oeuf " + egg.getName() + " doit éclore à : "+ evolution +" soit dans : " + (evolution.getTime() - dateNow.getTime()));
             if(evolution.getTime() <= dateNow.getTime())
             {
                 System.out.println("oeuf éclos : " + egg.getName());
                 hatchingRepository.delete(egg);
+                sendMessage(egg);
             }
         }
     }

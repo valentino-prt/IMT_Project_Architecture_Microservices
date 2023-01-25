@@ -5,12 +5,12 @@ import com.example.store.web.model.Egg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController("/eggs")
 public class StoreController {
     @Autowired
     private StoreService storeService;
-
-
 
     @PostMapping("/refreshStore")
     public Boolean refreshStore(){

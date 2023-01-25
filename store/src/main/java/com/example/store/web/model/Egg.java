@@ -1,6 +1,7 @@
 package com.example.store.web.model;
 
 import jakarta.persistence.*;
+import org.springframework.core.SpringVersion;
 
 @Entity
 public class Egg {
@@ -9,7 +10,6 @@ public class Egg {
     @SequenceGenerator(name = "egg_seq", sequenceName = "egg_seq", allocationSize = 1)
 
     private Integer id;
-
     private String name;
     private Integer hatchingTime;
     private Integer price;

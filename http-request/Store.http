@@ -1,0 +1,21 @@
+### Send POST request with json body
+POST http://localhost:8083/add
+Content-Type: application/json
+
+{
+  "name": "Dracofeu",
+  "level": 2,
+  "price": 123,
+  "hatchingTime" : 12
+}
+
+### Send Get all
+GET http://localhost:8080/all
+
+###
+DELETE http://localhost:8080/
+
+###
+GET http://localhost:8080/get/2
+
+

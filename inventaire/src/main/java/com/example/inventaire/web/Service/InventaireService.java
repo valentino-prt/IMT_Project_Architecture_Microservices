@@ -1,9 +1,9 @@
-package com.example.inventaire.Service;
+package com.example.inventaire.web.Service;
 
-import com.example.inventaire.Model.Egg;
-import com.example.inventaire.Model.Pokemon;
-import com.example.inventaire.Repository.EggRepository;
-import com.example.inventaire.Repository.PokemonRepository;
+import com.example.inventaire.web.Model.Egg;
+import com.example.inventaire.web.Model.Pokemon;
+import com.example.inventaire.web.Repository.EggRepository;
+import com.example.inventaire.web.Repository.PokemonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

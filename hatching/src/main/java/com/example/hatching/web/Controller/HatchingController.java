@@ -1,8 +1,9 @@
-package com.example.hatching.Controller;
+package com.example.hatching.web.Controller;
 
-import com.example.hatching.Model.Eggs;
-import com.example.hatching.Repository.HatchingRepository;
-import com.example.hatching.Service.HatchingService;
+import com.example.hatching.queue.Sender;
+import com.example.hatching.web.Model.Egg;
+import com.example.hatching.web.Repository.HatchingRepository;
+import com.example.hatching.web.Service.HatchingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,25 +16,28 @@ public class HatchingController {
     private HatchingRepository hatchingRepository;
     @Autowired
     private HatchingService hatchingService;
+
+    @Autowired
+    private Sender sender;
+
     @PostMapping("/egg")
-    public @ResponseBody Eggs addEggs(
+    public @ResponseBody Egg addEggs(
             @RequestParam String name,
             @RequestParam Integer hatchingTime) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-        final Eggs egg = new Eggs();
+        final Egg egg = new Egg();
         egg.setName(name);
         egg.setHatchingTime(hatchingTime);
         Date date = new Date();
         egg.setDateDeposit(date);
         return hatchingService.save(egg);
     }
-    @GetMapping("/egg")
-    public @ResponseBody Iterable<Eggs> getAllUsers() {
+    @GetMapping("/allEggs")
+    public @ResponseBody Iterable<Egg> getAllEggs() {
         // This returns a JSON or XML with the users
-        return hatchingService.getAllUsers();
+        return hatchingService.getAllEggs();
     }
-}
 
-    //@PostMapping("/eggs/")
+}
 

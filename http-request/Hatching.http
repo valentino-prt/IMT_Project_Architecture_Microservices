@@ -1,0 +1,6 @@
+
+### add egg
+POST localhost:8082/egg?name=metamorph&hatchingTime=1
+
+### get all eggs
+GET http://localhost:8082/allEggs
