@@ -41,4 +41,23 @@ public class DresseurController {
         dresseurService.deleteDresseur(id);
         return "OK";
     }
+
+    @PutMapping("/change_gold")
+    public @ResponseBody Dresseur changeGold(
+                @RequestParam  Integer id,
+            @RequestParam  Integer amout) {
+        // @ResponseBody means the returned String is the response, not a view name
+        // @RequestParam means it is a parameter from the GET or POST request
+        return dresseurService.changeGold(id, amout);
+    }
+
+    @PutMapping("/change_xp")
+    public @ResponseBody Dresseur changeXp(
+            @RequestParam  Integer id,
+            @RequestParam  Integer amout) {
+        // @ResponseBody means the returned String is the response, not a view name
+        // @RequestParam means it is a parameter from the GET or POST request
+        return dresseurService.changeXp(id, amout);
+    }
+
 }

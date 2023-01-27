@@ -23,10 +23,17 @@ public class DresseurService {
         dresserRepository.deleteById(id);
     }
 
-    /*public Dresseur changeGold(Integer id, Integer amout) {
-        Dresseur dresseur = dresserRepository.findById(id);
+    public Dresseur changeGold(Integer id, Integer amout) {
+        Dresseur dresseur = dresserRepository.findDresseurById(id);
         dresseur.setGold(dresseur.getGold() + amout);
         dresserRepository.save(dresseur);
         return dresseur;
-    }*/
+    }
+
+    public Dresseur changeXp(Integer id, Integer amout) {
+        Dresseur dresseur = dresserRepository.findDresseurById(id);
+        dresseur.setXp(dresseur.getXp() + amout);
+        dresserRepository.save(dresseur);
+        return dresseur;
+    }
 }
