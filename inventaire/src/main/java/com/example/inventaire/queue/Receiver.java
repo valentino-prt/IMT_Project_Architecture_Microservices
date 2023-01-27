@@ -1,15 +1,16 @@
 package com.example.inventaire.queue;
 
+import com.example.inventaire.web.Model.Pokemon;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StopWatch;
-
-import java.util.Random;
-import java.util.Scanner;
+import com.example.inventaire.web.Service.InventaireService;
 
 @RabbitListener(queues = "hello")
 public class Receiver {
-
+    @Autowired
+    private InventaireService inventaireService;
     @RabbitHandler
     public void receive(String in) throws InterruptedException {
         StopWatch watch = new StopWatch();
@@ -22,19 +23,8 @@ public class Receiver {
     }
 
     private void doWork(String in) throws InterruptedException {
-//        Scanner myObj = new Scanner(System.in);
-//        String input = null;
-//        System.out.println("Would you like to keep this funcking Pokemon in your inventory? (y/n)");
-//        while (input =='y' || input =='n'){
-//            input = myObj.nextLine();
-//        }
-//        if (input == 'y'){
-//            // add pokemon to his inventory
-//
-//
-//        }
-//        // if n : nothing to do
-        System.out.println("I need to do some work");
-
+        Pokemon pokemon = new Pokemon(in);
+        System.out.println(pokemon.getName() + " " + pokemon.getLevel());
+        inventaireService.savePokemon(pokemon);
     }
 }
