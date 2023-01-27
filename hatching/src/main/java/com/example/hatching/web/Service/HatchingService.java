@@ -29,8 +29,8 @@ public class HatchingService {
         return (List<Egg>) hatchingRepository.findAll();
     }
 
-    public void sendMessage(Egg egg) {
-        this.sender.send(egg);
+    public void sendMessage(Pokemon pokemon) {
+        this.sender.send(pokemon);
     }
 
 
@@ -54,8 +54,10 @@ public class HatchingService {
                 Pokemon generatedPokemon = new Pokemon();
                 generatedPokemon.setName(eggName[2]);
                 generatedPokemon.setLevel(int_random);
-                System.out.println(egg.getName() +" éclos en Pokémon : " + generatedPokemon.getName() + " de niveau : " + generatedPokemon.getLevel());
+                System.out.println(egg.getName() +" éclot en Pokémon : " + generatedPokemon.getName() + " de niveau : " + generatedPokemon.getLevel());
                 hatchingRepository.delete(egg);
+                sendMessage(generatedPokemon);
+
             }
         }
     }
