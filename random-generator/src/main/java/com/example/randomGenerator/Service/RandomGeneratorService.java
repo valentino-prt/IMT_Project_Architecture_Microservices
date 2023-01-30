@@ -3,12 +3,31 @@ import com.example.randomGenerator.Model.Egg;
 import com.example.randomGenerator.Model.Pokemon;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 @Service
 public class RandomGeneratorService {
+
+    private static final String COMMA_DELIMITER = String.valueOf(';');
+    private final List<String> pokemonNames;
+
+    public RandomGeneratorService(){
+        List<String> records = new ArrayList<>();
+        try (
+                BufferedReader br = new BufferedReader(new FileReader("random-generator/src/main/resources/pokedex.csv"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                records.add(line);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        this.pokemonNames = records;
+
+    }
 
     public Pokemon getPokemon(){
         Pokemon pokemon = new Pokemon();
@@ -25,12 +44,11 @@ public class RandomGeneratorService {
     }
 
     private Integer getRandomInteger(Integer max){
-        Random rand = new Random(max);
+        Random rand = new Random();
         return rand.nextInt(max);
     }
 
     private String getRandomName(){
-        List<String> pokemonNames = Arrays.asList("Pikachu", "Ratata", "Rototo");
         return pokemonNames.get(this.getRandomInteger(pokemonNames.size()-1));
     }
 }

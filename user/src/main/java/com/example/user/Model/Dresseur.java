@@ -54,7 +54,4 @@ public class Dresseur {
     public Integer getXp() {
         return xp;
     }
-
-
-
 }
