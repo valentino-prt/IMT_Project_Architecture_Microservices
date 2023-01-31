@@ -1,0 +1,5 @@
+### get all eggs
+GET http://localhost:80/get_egg
+
+###
+GET http://localhost:80/get_pokemon

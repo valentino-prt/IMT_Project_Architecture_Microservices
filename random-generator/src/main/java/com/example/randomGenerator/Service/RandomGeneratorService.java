@@ -10,8 +10,6 @@ import java.util.*;
 
 @Service
 public class RandomGeneratorService {
-
-    private static final String COMMA_DELIMITER = String.valueOf(';');
     private final List<String> pokemonNames;
 
     public RandomGeneratorService(){
