@@ -1,5 +1,5 @@
-### get all eggs
+### generate random egg
 GET http://localhost:80/get_egg
 
-###
+### generate random pokemon
 GET http://localhost:80/get_pokemon
