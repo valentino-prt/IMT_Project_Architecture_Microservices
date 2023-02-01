@@ -1,0 +1,17 @@
+### get all eggs
+GET http://localhost:4000/eggs
+
+### add eggs
+POST http://localhost:4000/add_egg
+
+### delete egg
+DELETE http://localhost:4000/delete_egg?id=1
+
+### get all pokemons
+GET http://localhost:4000/pokemons
+
+### add pokemon
+POST http://localhost:4000/add_pokemon?name=miaouss&level=15
+
+### delete pokemon
+DELETE http://localhost:4000/delete_pokemon?id=1

@@ -23,14 +23,26 @@ public class DresseurService {
         dresserRepository.deleteById(id);
     }
 
-    public Dresseur changeGold(Integer id, Integer amout) {
+    public Dresseur addGold(Integer id, Integer amout) {
         Dresseur dresseur = dresserRepository.findDresseurById(id);
         dresseur.setGold(dresseur.getGold() + amout);
         dresserRepository.save(dresseur);
         return dresseur;
     }
+    public Dresseur removeGold(Integer id, Integer amout) {
+        Dresseur dresseur = dresserRepository.findDresseurById(id);
+        if(dresseur.getGold() - amout < 0)
+        {
+            dresseur.setGold(0);
+        }
+        else {
+            dresseur.setGold(dresseur.getGold() - amout);
+        }
+        dresserRepository.save(dresseur);
+        return dresseur;
+    }
 
-    public Dresseur changeXp(Integer id, Integer amout) {
+    public Dresseur addXp(Integer id, Integer amout) {
         Dresseur dresseur = dresserRepository.findDresseurById(id);
         dresseur.setXp(dresseur.getXp() + amout);
         dresserRepository.save(dresseur);

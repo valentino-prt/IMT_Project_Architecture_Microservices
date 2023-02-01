@@ -12,7 +12,7 @@ public class StoreController {
     @Autowired
     private StoreService storeService;
 
-    @PostMapping("/refreshStore")
+    @GetMapping("/refreshStore")
     public Boolean refreshStore(){
         return null;
     }

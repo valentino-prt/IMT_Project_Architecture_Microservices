@@ -42,22 +42,30 @@ public class DresseurController {
         return "OK";
     }
 
-    @PutMapping("/change_gold")
-    public @ResponseBody Dresseur changeGold(
+    @PutMapping("/add_gold")
+    public @ResponseBody Dresseur addGold(
                 @RequestParam  Integer id,
-            @RequestParam  Integer amout) {
+            @RequestParam  Integer amount) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-        return dresseurService.changeGold(id, amout);
+        return dresseurService.addGold(id, amount);
     }
 
-    @PutMapping("/change_xp")
-    public @ResponseBody Dresseur changeXp(
+    @PutMapping("/add_xp")
+    public @ResponseBody Dresseur addXp(
             @RequestParam  Integer id,
-            @RequestParam  Integer amout) {
+            @RequestParam  Integer amount) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-        return dresseurService.changeXp(id, amout);
+        return dresseurService.addXp(id, amount);
+    }
+    @PutMapping("/remove_gold")
+    public @ResponseBody Dresseur removeGold(
+            @RequestParam  Integer id,
+            @RequestParam  Integer amount) {
+        // @ResponseBody means the returned String is the response, not a view name
+        // @RequestParam means it is a parameter from the GET or POST request
+        return dresseurService.removeGold(id, amount);
     }
 
 }

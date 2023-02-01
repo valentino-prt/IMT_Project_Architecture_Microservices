@@ -39,4 +39,9 @@ public class InventaireService {
         eggRepository.deleteById(id);
     }
 
+    public long countPokemon() {
+        return pokemonRepository.count();
+    }
+
+
 }
