@@ -10,6 +10,8 @@ public class Egg {
     private String name;
     private Integer hatchingTime;
 
+    private Integer No;
+
     public void setHatchingTime(Integer hatchingTime) {
         this.hatchingTime = hatchingTime;
     }
@@ -26,4 +28,11 @@ public class Egg {
         return hatchingTime;
     }
 
+    public Integer getNo() {
+        return No;
+    }
+
+    public void setNo(Integer no) {
+        No = no;
+    }
 }

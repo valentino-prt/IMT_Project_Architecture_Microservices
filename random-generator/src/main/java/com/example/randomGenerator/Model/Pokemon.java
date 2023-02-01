@@ -9,6 +9,7 @@ public class Pokemon {
     @SequenceGenerator(name = "pokemon_seq", sequenceName = "pokemon_seq", allocationSize = 1)
     private String name;
     private Integer level;
+    private Integer No;
 
     public void setLevel(Integer level) {
         this.level = level;
@@ -24,5 +25,13 @@ public class Pokemon {
 
     public Integer getLevel() {
         return level;
+    }
+
+    public Integer getNo() {
+        return No;
+    }
+
+    public void setNo(Integer no) {
+        No = no;
     }
 }

@@ -11,6 +11,7 @@ import java.util.*;
 @Service
 public class RandomGeneratorService {
     private final List<String> pokemonNames;
+    private static final String COMMA_DELIMITER = String.valueOf(';');
 
     public RandomGeneratorService(){
         List<String> records = new ArrayList<>();
@@ -30,14 +31,18 @@ public class RandomGeneratorService {
     public Pokemon getPokemon(){
         Pokemon pokemon = new Pokemon();
         pokemon.setLevel(this.getRandomInteger(100));
-        pokemon.setName(this.getRandomName());
+        String[] noAndName = this.getRandomName();
+        pokemon.setName(noAndName[1]);
+        pokemon.setNo(Integer.valueOf(noAndName[0]));
         return pokemon;
     }
 
     public Egg getEgg(){
         Egg egg = new Egg();
         egg.setHatchingTime(this.getRandomInteger(50));
-        egg.setName(this.getRandomName());
+        String[] noAndName = this.getRandomName();
+        egg.setNo(Integer.valueOf(noAndName[0]));
+        egg.setName(noAndName[1]);
         return egg;
     }
 
@@ -46,7 +51,11 @@ public class RandomGeneratorService {
         return rand.nextInt(max);
     }
 
-    private String getRandomName(){
-        return pokemonNames.get(this.getRandomInteger(pokemonNames.size()-1));
+    private String[] getRandomName(){
+        String str = pokemonNames.get(this.getRandomInteger(pokemonNames.size()-1));
+        String[] noAndName = str.split(COMMA_DELIMITER);
+
+        return noAndName;
     }
+
 }
