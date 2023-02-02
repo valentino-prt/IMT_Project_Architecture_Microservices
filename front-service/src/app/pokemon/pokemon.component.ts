@@ -1,4 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {PokemonService} from "../pokemon.service";
+
 
 @Component({
   selector: 'app-pokemon',
@@ -6,51 +8,25 @@ import {Component} from '@angular/core';
   styleUrls: ['./pokemon.component.css']
 })
 
-export class PokemonComponent {
-  pokemonList: Pokemon[] = [
-    {
-      id: 10,
-      name: "Sabelette",
-      hp: 19,
-      cp: 3,
-      picture: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/027.png",
-      types: ["Normal"],
-      created: new Date()
-    },
-    {
-      id: 11,
-      name: "Mélofée",
-      hp: 25,
-      cp: 5,
-      picture: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/035.png",
-      types: ["Fée"],
-      created: new Date()
-    },
-    {
-      id: 12,
-      name: "Groupix",
-      hp: 17,
-      cp: 8,
-      picture: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/037.png",
-      types: ["Feu"],
-      created: new Date()
-    }
-  ];
+export class PokemonComponent implements OnInit {
+  pokemonList: Pokemon[] = [];
+
+  constructor(private pokemonService: PokemonService) {
+  }
+
+  ngOnInit() {
+    this.pokemonService.getPokemonList().subscribe(pokemonList => this.pokemonList = pokemonList);
+  }
 }
 
 export class Pokemon {
-  // @ts-ignore
-  id: number;
-  // @ts-ignore
-  hp: number;
-  // @ts-ignore
-  cp: number;
-  // @ts-ignore
-  name: string;
-  // @ts-ignore
-  picture: string;
-  // @ts-ignore
-  types: Array<string>;
-  // @ts-ignore
-  created: Date;
+  id: number = 0;
+  name: string = '';
+  No: number = 0;
+  level: number = 0;
+
+  picture: string = ``
+
+  constructor() {
+  }
 }

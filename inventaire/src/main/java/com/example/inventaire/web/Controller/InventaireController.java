@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController()
+@CrossOrigin(origins = "*")
 public class InventaireController {
     @Autowired
     private InventaireService inventaireService;
+
     @PostMapping("/add_pokemon")
     public @ResponseBody Pokemon addPokemon(
             @RequestParam Integer level,
@@ -21,6 +23,7 @@ public class InventaireController {
         pokemon.setNo(no);
         return inventaireService.savePokemon(pokemon);
     }
+
     @PostMapping("/add_egg")
     public @ResponseBody Egg addEgg(
             @RequestParam Integer hatchingTime,
