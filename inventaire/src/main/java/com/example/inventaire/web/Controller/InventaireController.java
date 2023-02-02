@@ -16,7 +16,7 @@ public class InventaireController {
     public @ResponseBody Pokemon addPokemon(
             @RequestParam Integer level,
             @RequestParam String name,
-            @RequestParam Integer no) {
+            @RequestParam String no) {
         final Pokemon pokemon = new Pokemon();
         pokemon.setName(name);
         pokemon.setLevel(level);

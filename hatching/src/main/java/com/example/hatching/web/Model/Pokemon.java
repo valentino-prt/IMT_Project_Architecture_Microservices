@@ -1,26 +1,24 @@
 package com.example.hatching.web.Model;
 
-import jakarta.persistence.Entity;
-
 public class Pokemon {
     private String name;
     private Integer level;
-    private Integer No;
+    private String No;
 
-    public Integer getNo() {
+    public String getNo() {
         return No;
     }
 
-    public void setNo(Integer no) {
+    public void setNo(String no) {
         No = no;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getLevel() {
@@ -30,7 +28,6 @@ public class Pokemon {
     public void setLevel(Integer level) {
         this.level = level;
     }
-
 
 
 }

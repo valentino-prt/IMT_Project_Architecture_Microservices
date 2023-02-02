@@ -15,17 +15,24 @@ export class PokemonComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pokemonService.getPokemonList().subscribe(pokemonList => this.pokemonList = pokemonList);
+    this.pokemonService.getPokemonList().subscribe(pokemonList => {
+      this.pokemonList = pokemonList;
+      this.pokemonList = this.pokemonList.map(pokemon => {
+        return {
+          ...pokemon, picture: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemon.no}.png`
+        }
+      })
+    });
   }
 }
 
 export class Pokemon {
   id: number = 0;
   name: string = '';
-  No: number = 0;
+  no: string = '';
   level: number = 0;
 
-  picture: string = ``
+  picture: string = ``;
 
   constructor() {
   }
