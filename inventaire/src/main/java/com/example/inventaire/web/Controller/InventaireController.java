@@ -13,19 +13,23 @@ public class InventaireController {
     @PostMapping("/add_pokemon")
     public @ResponseBody Pokemon addPokemon(
             @RequestParam Integer level,
-            @RequestParam String name) {
+            @RequestParam String name,
+            @RequestParam Integer no) {
         final Pokemon pokemon = new Pokemon();
         pokemon.setName(name);
         pokemon.setLevel(level);
+        pokemon.setNo(no);
         return inventaireService.savePokemon(pokemon);
     }
     @PostMapping("/add_egg")
     public @ResponseBody Egg addEgg(
             @RequestParam Integer hatchingTime,
-            @RequestParam String name) {
+            @RequestParam String name,
+            @RequestParam Integer no) {
         final Egg egg = new Egg();
         egg.setName(name);
         egg.setHatchingTime(hatchingTime);
+        egg.setNo(no);
         return inventaireService.saveEgg(egg);
     }
 

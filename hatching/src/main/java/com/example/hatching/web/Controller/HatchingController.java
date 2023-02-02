@@ -23,7 +23,8 @@ public class HatchingController {
     @PostMapping("/egg")
     public @ResponseBody Egg addEggs(
             @RequestParam String name,
-            @RequestParam Integer hatchingTime) {
+            @RequestParam Integer hatchingTime,
+            @RequestParam Integer No) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         final Egg egg = new Egg();
@@ -31,6 +32,7 @@ public class HatchingController {
         egg.setHatchingTime(hatchingTime);
         Date date = new Date();
         egg.setDateDeposit(date);
+        egg.setNo(No);
         return hatchingService.save(egg);
     }
     @GetMapping("/allEggs")

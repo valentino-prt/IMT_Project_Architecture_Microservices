@@ -14,6 +14,13 @@ public class Egg {
     private String name;
     private Integer hatchingTime;
     private Date dateDeposit;
+    private Integer No;
+    public Integer getNo() {
+        return No;
+    }
+    public void setNo(Integer no) {
+        No = no;
+    }
     public Date getDateDeposit() {
         return dateDeposit;
     }

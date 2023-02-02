@@ -11,11 +11,22 @@ public class Egg {
 
     private Integer id;
     private String name;
+
+
+
     private Integer hatchingTime;
     private Integer price;
 
     private Integer level;
 
+    private Integer No;
+    public Integer getNo() {
+        return No;
+    }
+
+    public void setNo(Integer no) {
+        No = no;
+    }
     public void setHatchingTime(Integer hatchingTime) {
         this.hatchingTime = hatchingTime;
     }

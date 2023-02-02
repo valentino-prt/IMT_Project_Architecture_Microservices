@@ -8,9 +8,10 @@ import java.util.Arrays;
 public class Pokemon {
     public Pokemon(String received_message){
         String[] parameters = received_message.split(";");
-        if (parameters.length == 2) {
+        if (parameters.length == 3) {
             this.name = parameters[0];
             this.level = Integer.parseInt(parameters[1]);
+            this.No = Integer.parseInt(parameters[2]);
         }
     }
 
@@ -23,6 +24,16 @@ public class Pokemon {
     private Integer id;
     private String name;
     private Integer level;
+
+    private Integer No;
+
+    public Integer getNo() {
+        return No;
+    }
+
+    public void setNo(Integer no) {
+        this.No = no;
+    }
 
     public void setLevel(Integer level) {
         this.level = level;
