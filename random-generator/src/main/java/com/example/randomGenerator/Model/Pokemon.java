@@ -9,7 +9,7 @@ public class Pokemon {
     @SequenceGenerator(name = "pokemon_seq", sequenceName = "pokemon_seq", allocationSize = 1)
     private String name;
     private Integer level;
-    private Integer No;
+    private String picture;
 
     public void setLevel(Integer level) {
         this.level = level;
@@ -27,11 +27,11 @@ public class Pokemon {
         return level;
     }
 
-    public Integer getNo() {
-        return No;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setNo(Integer no) {
-        No = no;
+    public void setPicture(Integer no) {
+        this.picture = String.format("https://assets.pokemon.com/assets/cms2/img/pokedex/detail/%s.png",no);
     }
 }

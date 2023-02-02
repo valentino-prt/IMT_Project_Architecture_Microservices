@@ -11,7 +11,8 @@ public class Pokemon {
         if (parameters.length == 3) {
             this.name = parameters[0];
             this.level = Integer.parseInt(parameters[1]);
-            this.No = Integer.parseInt(parameters[2]);
+            this.picture = String.format("https://assets.pokemon.com/assets/cms2/img/pokedex/detail/%s.png",Integer.parseInt(parameters[2]));
+
         }
     }
 
@@ -25,14 +26,15 @@ public class Pokemon {
     private String name;
     private Integer level;
 
-    private Integer No;
+    private String picture;
 
-    public Integer getNo() {
-        return No;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setNo(Integer no) {
-        this.No = no;
+    public void setPicture(Integer no) {
+        this.picture = String.format("https://assets.pokemon.com/assets/cms2/img/pokedex/detail/%s.png",no);
+
     }
 
     public void setLevel(Integer level) {

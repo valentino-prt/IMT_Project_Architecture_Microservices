@@ -1,7 +1,6 @@
 package com.example.store.web.model;
 
 import jakarta.persistence.*;
-import org.springframework.core.SpringVersion;
 
 @Entity
 public class Egg {
@@ -19,13 +18,13 @@ public class Egg {
 
     private Integer level;
 
-    private Integer No;
-    public Integer getNo() {
-        return No;
+    private String picture;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setNo(Integer no) {
-        No = no;
+    public void setPicture(Integer no) {
+       this.picture = String.format("https://assets.pokemon.com/assets/cms2/img/pokedex/detail/%s.png",no);
     }
     public void setHatchingTime(Integer hatchingTime) {
         this.hatchingTime = hatchingTime;

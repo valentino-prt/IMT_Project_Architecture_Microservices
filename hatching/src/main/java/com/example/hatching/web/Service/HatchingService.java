@@ -51,9 +51,8 @@ public class HatchingService {
                 int int_random = rand.nextInt(100);
 
                 String[] eggName = egg.getName().split(" ");
-                Pokemon generatedPokemon = new Pokemon();
+                Pokemon generatedPokemon = new Pokemon(egg.getPicture());
                 generatedPokemon.setName(eggName[2]);
-                generatedPokemon.setNo(egg.getNo());
                 generatedPokemon.setLevel(int_random);
                 System.out.println(egg.getName() +" éclot en Pokémon : " + generatedPokemon.getName() + " de niveau : " + generatedPokemon.getLevel());
                 hatchingRepository.delete(egg);

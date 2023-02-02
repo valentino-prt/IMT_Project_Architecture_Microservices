@@ -32,7 +32,7 @@ public class HatchingController {
         egg.setHatchingTime(hatchingTime);
         Date date = new Date();
         egg.setDateDeposit(date);
-        egg.setNo(No);
+        egg.setPicture(No);
         return hatchingService.save(egg);
     }
     @GetMapping("/allEggs")

@@ -10,14 +10,14 @@ public class Egg {
     private Integer id;
     private String name;
     private Integer hatchingTime;
-    private Integer No;
+    private String picture;
 
-    public Integer getNo() {
-        return No;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setNo(Integer no) {
-        No = no;
+    public void setPicture(Integer no) {
+        this.picture = String.format("https://assets.pokemon.com/assets/cms2/img/pokedex/detail/%s.png",no);
     }
 
     public void setHatchingTime(Integer hatchingTime) {
