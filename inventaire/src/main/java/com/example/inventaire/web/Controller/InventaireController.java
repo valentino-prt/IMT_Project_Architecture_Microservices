@@ -20,7 +20,7 @@ public class InventaireController {
         final Pokemon pokemon = new Pokemon();
         pokemon.setName(name);
         pokemon.setLevel(level);
-        pokemon.setPicture(no);
+        pokemon.setNo(no);
         return inventaireService.savePokemon(pokemon);
     }
 
@@ -32,7 +32,7 @@ public class InventaireController {
         final Egg egg = new Egg();
         egg.setName(name);
         egg.setHatchingTime(hatchingTime);
-        egg.setPicture(no);
+        egg.setNo(no);
         return inventaireService.saveEgg(egg);
     }
 

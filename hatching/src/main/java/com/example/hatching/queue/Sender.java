@@ -13,7 +13,7 @@ public class Sender {
     private Queue queue;
 
     public String send(Pokemon pokemon) {
-        String hatching_message = new String(pokemon.getName() + ";" + pokemon.getLevel()+ ";" + pokemon.getPicture());
+        String hatching_message = new String(pokemon.getName() + ";" + pokemon.getLevel()+ ";" + pokemon.getNo());
         template.convertAndSend(queue.getName(), hatching_message);
         return " [x] Sent '" + hatching_message + "'";
     }

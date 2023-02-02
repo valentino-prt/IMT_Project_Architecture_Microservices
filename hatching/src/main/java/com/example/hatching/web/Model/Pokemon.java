@@ -3,19 +3,16 @@ package com.example.hatching.web.Model;
 import jakarta.persistence.Entity;
 
 public class Pokemon {
-    public Pokemon(String url){
-        this.picture = url;
-    }
-    public Pokemon(){}
     private String name;
     private Integer level;
-    private String picture;
-    public String getPicture() {
-        return picture;
-    }
-    public void setPicture(Integer no) {
-        this.picture = String.format("https://assets.pokemon.com/assets/cms2/img/pokedex/detail/%s.png",no);
+    private Integer No;
 
+    public Integer getNo() {
+        return No;
+    }
+
+    public void setNo(Integer no) {
+        No = no;
     }
 
     public void setName(String name) {

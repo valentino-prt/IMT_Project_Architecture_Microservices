@@ -10,7 +10,7 @@ public class Egg {
     private String name;
     private Integer hatchingTime;
 
-    private String picture;
+    private Integer No;
 
     public void setHatchingTime(Integer hatchingTime) {
         this.hatchingTime = hatchingTime;
@@ -28,11 +28,11 @@ public class Egg {
         return hatchingTime;
     }
 
-    public String getPicture() {
-        return picture;
+    public Integer getNo() {
+        return No;
     }
 
-    public void setPicture(String no) {
-        this.picture = String.format("https://assets.pokemon.com/assets/cms2/img/pokedex/detail/%s.png",no);
+    public void setNo(Integer no) {
+        No = no;
     }
 }

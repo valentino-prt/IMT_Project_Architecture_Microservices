@@ -33,7 +33,7 @@ public class RandomGeneratorService {
         pokemon.setLevel(this.getRandomInteger(100));
         String[] noAndName = this.getRandomName();
         pokemon.setName(noAndName[1]);
-        pokemon.setPicture(Integer.valueOf(noAndName[0]));
+        pokemon.setNo(Integer.valueOf(noAndName[0]));
         return pokemon;
     }
 
@@ -41,7 +41,7 @@ public class RandomGeneratorService {
         Egg egg = new Egg();
         egg.setHatchingTime(this.getRandomInteger(50));
         String[] noAndName = this.getRandomName();
-        egg.setPicture(noAndName[0]);
+        egg.setNo(Integer.valueOf(noAndName[0]));
         egg.setName(noAndName[1]);
         return egg;
     }

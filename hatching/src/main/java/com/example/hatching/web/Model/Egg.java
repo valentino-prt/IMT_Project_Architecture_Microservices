@@ -6,6 +6,7 @@ import java.util.Date;
 
 @Entity
 public class Egg {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "egg_generator")
     @SequenceGenerator(name = "egg_seq", sequenceName = "egg_seq", allocationSize = 1)
@@ -13,13 +14,12 @@ public class Egg {
     private String name;
     private Integer hatchingTime;
     private Date dateDeposit;
-    private String picture;
-    public String getPicture() {
-        return picture;
+    private Integer No;
+    public Integer getNo() {
+        return No;
     }
-    public void setPicture(Integer no) {
-        this.picture = String.format("https://assets.pokemon.com/assets/cms2/img/pokedex/detail/%s.png",no);
-
+    public void setNo(Integer no) {
+        No = no;
     }
     public Date getDateDeposit() {
         return dateDeposit;
