@@ -24,7 +24,7 @@ export class PokemonService {
   }
 
   getPokemonList(): Observable<Pokemon[]> {
-    return this.getData<Pokemon[]>('http://localhost:4000/pokemons');
+    return this.getData<Pokemon[]>('http://localhost:8081/pokemons');
   }
 
   getEggList(): Observable<Egg[]> {
@@ -32,7 +32,7 @@ export class PokemonService {
   }
 
   removePokemon(id: number) {
-    return this.http.delete(`http://localhost:4000/delete_pokemon?id=${id}`, {observe: 'response'}).pipe(
+    return this.http.delete(`http://localhost:8081/delete_pokemon?id=${id}`, {observe: 'response'}).pipe(
       tap((response) => {
         if (response.status === 200) {
           console.log('The Pokemon was successfully deleted.');

@@ -11,3 +11,10 @@
 - L’utilisateur ne peut combattre que le boss de l’étage auquel il est actuellement. Lorsqu’il gagne, il avance d’un étage et peux rencontrer le boss suivant.
 - Un rapport des Pokemon, combats, œufs et éclosions est disponible. Il n’a pas besoin d’être à jour à l’instant T et ne doit pas faire appel à d’autres micro-services au moment de la lecture. Il peut cependant faire appel à d’autre micro-service au moment de la génération du rapport.
 - Les combats n’ont pas besoin d’être complexe. Si votre système est simplement de dire que le Pokemon avec le plus grand niveau gagne c’est un système valide. Le gain d’expérience peut être simplifié par gagner un niveau à chaque combat gagné.
+
+# Port 
+Hatching service : 8082
+Inventaire service : 8081
+Random service : 8083
+Store service : 8084
+User service : 8080
