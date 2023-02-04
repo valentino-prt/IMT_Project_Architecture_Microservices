@@ -24,12 +24,14 @@ export class EggComponent implements OnInit {
 }
 
 export class Egg {
-  ht: number;
+  hatchingTime: number;
   name: string;
+  no: number;
 
-  constructor(ht: number, name: string) {
-    this.ht = ht;
+  constructor(hatchingTime: number, name: string, no: number) {
+    this.hatchingTime = hatchingTime;
     this.name = name;
+    this.no = no;
 
   }
 

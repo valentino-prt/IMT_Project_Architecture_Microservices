@@ -8,11 +8,13 @@ import {EggComponent} from './egg/egg.component';
 import {BorderCardDirective} from './border-card.directive';
 import {HttpClientModule} from "@angular/common/http";
 import {UserDetailComponent} from './user-detail/user-detail.component';
+import {Inventaire_eggComponent} from "./inventaire_egg/inventaire_egg.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeButtonComponent,
+    Inventaire_eggComponent,
     PokemonComponent,
     EggComponent,
     BorderCardDirective,

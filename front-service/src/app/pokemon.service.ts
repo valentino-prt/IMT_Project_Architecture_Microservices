@@ -26,6 +26,9 @@ export class PokemonService {
   getPokemonList(): Observable<Pokemon[]> {
     return this.getData<Pokemon[]>('http://localhost:8081/pokemons');
   }
+  getEggListInv(): Observable<Egg[]> {
+    return this.getData<Egg[]>('http://localhost:8081/eggs');
+  }
 
   getEggList(): Observable<Egg[]> {
     return this.getData<Egg[]>('http://localhost:8082/allEggs');
@@ -45,5 +48,23 @@ export class PokemonService {
         return of(error);
       })
     );
+  }
+  hatch(egg : Egg){
+    return this.http.post(`http://localhost:8082/egg?name=${egg.name}&No=${egg.no}&hatchingTime=${egg.hatchingTime}`, {observe: 'response'}).pipe(
+      tap((response) => {
+        console.log(response); //je n'arrive pas à accéder au properties de l'objet response
+        //this.http.delete(`http://localhost:8081/delete_egg?id=${response.valueOf()}`)
+        /*if (response === 200) {
+          console.log('Egg was successfully add to hatching service.');
+        } else {
+          console.error('An error occurred while add egg to hatching service.');
+        }*/
+      }),
+      catchError((error) => {
+        console.error(error);
+        return of(error);
+      })
+    );
+
   }
 }
