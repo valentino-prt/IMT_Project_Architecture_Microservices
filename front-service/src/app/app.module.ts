@@ -7,6 +7,7 @@ import {PokemonComponent} from './pokemon/pokemon.component';
 import {EggComponent} from './egg/egg.component';
 import {BorderCardDirective} from './border-card.directive';
 import {HttpClientModule} from "@angular/common/http";
+import {UserDetailComponent} from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {HttpClientModule} from "@angular/common/http";
     HomeButtonComponent,
     PokemonComponent,
     EggComponent,
-    BorderCardDirective
+    BorderCardDirective,
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,

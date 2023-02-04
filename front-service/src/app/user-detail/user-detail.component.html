@@ -1,0 +1,15 @@
+<div class="card mb-3 w-100">
+  <div class="row g-0">
+    <div class="col-4 col-md-2">
+      <img alt="dressor" class="img-fluid rounded-start p-3 " src="/assets/images/dressor.png" style="height: 250px">
+    </div>
+    <div *ngIf="trainer" class="col-8 col-md-10">
+      <div class="card-body">
+        <h5 class="card-title">{{trainer.name}}</h5>
+        <p class="card-text">level : {{trainer.level}}</p>
+        <p class="card-text">gold : {{trainer.gold}}</p>
+        <p class="card-text">XP : {{trainer.xp}}</p>
+      </div>
+    </div>
+  </div>
+</div>

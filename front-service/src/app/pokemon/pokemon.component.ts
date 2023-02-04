@@ -15,25 +15,40 @@ export class PokemonComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pokemonService.getPokemonList().subscribe(pokemonList => {
-      this.pokemonList = pokemonList;
-      this.pokemonList = this.pokemonList.map(pokemon => {
-        return {
-          ...pokemon, picture: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemon.no}.png`
-        }
-      })
-    });
+    setInterval(() => {
+      this.pokemonService.getPokemonList().subscribe(pokemonList => {
+        this.pokemonList = pokemonList;
+        this.pokemonList = this.pokemonList.map(pokemon => {
+          return {
+            ...pokemon, picture: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemon.no}.png`
+          }
+        })
+      });
+    }, 1000)
+
+  }
+
+
+  public removePokemon(pokemon: Pokemon) {
+    this.pokemonService.removePokemon(pokemon.id).subscribe(() => {
+      this.pokemonList = this.pokemonList.filter(p => p.id !== pokemon.id);
+    })
   }
 }
 
 export class Pokemon {
-  id: number = 0;
-  name: string = '';
-  no: string = '';
-  level: number = 0;
+  id: number;
+  name: string;
+  no: string;
+  level: number;
 
-  picture: string = ``;
+  picture: string;
 
-  constructor() {
+  constructor(id: number, name: string, no: string, level: number) {
+    this.id = id;
+    this.name = name;
+    this.no = no;
+    this.level = level;
+    this.picture = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${this.no}.png`
   }
 }

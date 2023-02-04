@@ -13,5 +13,8 @@ GET http://localhost:4000/pokemons
 ### add pokemon
 POST http://localhost:4000/add_pokemon?name=miaouss&level=15
 
+### add egg from hatching service
+POST localhost:8082/egg?name=Métamorph&hatchingTime=1&No=132
+
 ### delete pokemon
 DELETE http://localhost:4000/delete_pokemon?id=1
