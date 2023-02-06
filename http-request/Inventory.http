@@ -1,20 +1,20 @@
 ### get all eggs
-GET http://localhost:4000/eggs
+GET http://localhost:8081/eggs
 
 ### add eggs
-POST http://localhost:4000/add_egg
+POST http://localhost:8081/add_egg?name=bulbizarre&hatchingTime=1&no=001
 
 ### delete egg
-DELETE http://localhost:4000/delete_egg?id=1
+DELETE http://localhost:8081/delete_egg?id=1
 
 ### get all pokemons
-GET http://localhost:4000/pokemons
+GET http://localhost:8081/pokemons
 
 ### add pokemon
-POST http://localhost:4000/add_pokemon?name=miaouss&level=15
+POST http://localhost:8081/add_pokemon?name=miaouss&level=15
 
 ### add egg from hatching service
-POST localhost:8082/egg?name=Métamorph&hatchingTime=1&No=132
+POST localhost:8082/egg?name=Métamorph&hatchingTime=1&No=012
 
 ### delete pokemon
 DELETE http://localhost:4000/delete_pokemon?id=1

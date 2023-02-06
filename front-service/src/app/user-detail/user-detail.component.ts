@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {TrainerService} from "../trainer.service";
 
 @Component({
   selector: 'app-user-detail',
@@ -6,14 +7,15 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  trainer: Trainer;
+  trainer: Trainer = new Trainer(0, "Sacha", 0, 0, 0);
 
-  constructor() {
-    this.trainer = new Trainer(1, "Ash", 1, 100, 0);
+  constructor(private traineService: TrainerService) {
   }
 
   ngOnInit() {
-
+    this.traineService.getTrainer().subscribe(trainer => {
+      this.trainer = trainer;
+    })
   }
 
 }

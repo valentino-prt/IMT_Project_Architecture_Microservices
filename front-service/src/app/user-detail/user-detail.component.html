@@ -3,7 +3,7 @@
     <div class="col-4 col-md-2">
       <img alt="dressor" class="img-fluid rounded-start p-3 " src="/assets/images/dressor.png" style="height: 250px">
     </div>
-    <div *ngIf="trainer" class="col-8 col-md-10">
+    <div *ngIf="trainer" class="col-6 col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{trainer.name}}</h5>
         <p class="card-text">level : {{trainer.level}}</p>
@@ -11,5 +11,23 @@
         <p class="card-text">XP : {{trainer.xp}}</p>
       </div>
     </div>
+  </div>
+  <div class="row g-0">
+    <div class="col-6 p-3">
+      <button class="btn btn-primary w-100">Acheter des crédit</button>
+      <form class="p-3">
+        <div class="form-group">
+          <input type="money" class="form-control" id="exampleFormControlInput1" placeholder="amount">
+        </div>
+      </form>
+
+    </div>
+    <div class="col-6 p-3">
+      <button class="btn btn-primary w-100">changer de nom</button>
+      <form class="p-3">
+        <div class="form-group">
+          <input type="name" class="form-control" id="exampleFormControlInput2" placeholder="name">
+        </div>
+      </form>
   </div>
 </div>

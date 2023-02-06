@@ -1,5 +1,5 @@
 <div class="container text-center">
-  <h1>Mes Oeufs</h1>
+  <h1>Mes Incubateurs</h1>
   <div class="row">
     <div *ngFor="let egg of eggList" class="col ">
       <div appBorderCard class="card m-3 shadow-sm" style="width: 18rem;">
@@ -7,7 +7,6 @@
         <div class="card-body">
           <h5 class="card-title">{{egg.name}}</h5>
           <p class="card-text">Hatching Time : {{egg.hatchingTime}}</p>
-          <a (click)="hatch(egg)" class="btn btn-primary" href="#">Hatch</a>
         </div>
       </div>
     </div>

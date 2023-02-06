@@ -1,18 +1,18 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {EggComponent} from './egg.component';
+import {HatchComponent} from './hatch.component';
 
-describe('Inventaire_eggComponent', () => {
-  let component: EggComponent;
-  let fixture: ComponentFixture<EggComponent>;
+describe('EggComponent', () => {
+  let component: HatchComponent;
+  let fixture: ComponentFixture<HatchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EggComponent]
+      declarations: [HatchComponent]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(EggComponent);
+    fixture = TestBed.createComponent(HatchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

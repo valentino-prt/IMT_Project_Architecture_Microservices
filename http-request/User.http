@@ -16,4 +16,5 @@ PUT http://localhost:8080/remove_gold?id=1&amout=15
 ### add xp
 PUT http://localhost:8080/add_xp?id=1&amout=15
 
-
+### get dresseur by id
+GET http://localhost:8080/dresseur?id=1

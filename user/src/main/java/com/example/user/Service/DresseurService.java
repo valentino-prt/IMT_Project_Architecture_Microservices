@@ -1,10 +1,13 @@
 package com.example.user.Service;
+
 import com.example.user.Model.Dresseur;
 import com.example.user.Repository.DresseurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class DresseurService {
 
@@ -19,6 +22,10 @@ public class DresseurService {
         return (List<Dresseur>) dresserRepository.findAll();
     }
 
+    public Optional<Dresseur> getDresseur(Integer id) {
+        return dresserRepository.findById(id);
+    }
+
     public void deleteDresseur(Integer id) {
         dresserRepository.deleteById(id);
     }
@@ -29,13 +36,12 @@ public class DresseurService {
         dresserRepository.save(dresseur);
         return dresseur;
     }
+
     public Dresseur removeGold(Integer id, Integer amout) {
         Dresseur dresseur = dresserRepository.findDresseurById(id);
-        if(dresseur.getGold() - amout < 0)
-        {
+        if (dresseur.getGold() - amout < 0) {
             dresseur.setGold(0);
-        }
-        else {
+        } else {
             dresseur.setGold(dresseur.getGold() - amout);
         }
         dresserRepository.save(dresseur);

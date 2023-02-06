@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Pokemon} from "./pokemon/pokemon.component";
+import {Egg, MyPokemon} from "./pokemon/pokemon.component";
 import {HttpClient} from "@angular/common/http";
 import {catchError, Observable, of, tap} from "rxjs";
 import {error} from "@angular/compiler-cli/src/transformers/util";
-import {Egg} from "./egg/egg.component";
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +22,10 @@ export class PokemonService {
     );
   }
 
-  getPokemonList(): Observable<Pokemon[]> {
-    return this.getData<Pokemon[]>('http://localhost:8081/pokemons');
+  getPokemonList(): Observable<MyPokemon[]> {
+    return this.getData<MyPokemon[]>('http://localhost:8081/pokemons');
   }
+
   getEggListInv(): Observable<Egg[]> {
     return this.getData<Egg[]>('http://localhost:8081/eggs');
   }
@@ -49,7 +49,24 @@ export class PokemonService {
       })
     );
   }
-  hatch(egg : Egg){
+
+  removeEgg(id: number) {
+    return this.http.delete(`http://localhost:8081/delete_egg?id=${id}`, {observe: 'response'}).pipe(
+      tap((response) => {
+        if (response.status === 200) {
+          console.log('The Egg was successfully deleted.');
+        } else {
+          console.error('An error occurred while deleting the Egg.');
+        }
+      }),
+      catchError((error) => {
+        console.error(error);
+        return of(error);
+      })
+    );
+  }
+
+  hatch(egg: Egg) {
     return this.http.post(`http://localhost:8082/egg?name=${egg.name}&No=${egg.no}&hatchingTime=${egg.hatchingTime}`, {observe: 'response'}).pipe(
       tap((response) => {
         console.log(response); //je n'arrive pas à accéder au properties de l'objet response
@@ -67,4 +84,6 @@ export class PokemonService {
     );
 
   }
+
+
 }

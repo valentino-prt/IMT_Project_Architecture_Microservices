@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {compareNumbers} from "@angular/compiler-cli/src/version_helpers";
 import {PokemonService} from "../pokemon.service";
+import {Egg} from "../pokemon/pokemon.component";
 
 @Component({
   selector: 'app-egg',
   templateUrl: './egg.component.html',
   styleUrls: ['./egg.component.css']
 })
+
 export class EggComponent implements OnInit {
   eggList: Egg[] = [];
 
@@ -15,24 +16,20 @@ export class EggComponent implements OnInit {
 
   ngOnInit() {
     setInterval(() => {
-      this.pokemonService.getEggList().subscribe(eggList => {
-        return this.eggList = eggList;
-      })
+      this.pokemonService.getEggListInv().subscribe(eggList => {
+        this.eggList = eggList;
+      });
     }, 1000)
-  }
-
-}
-
-export class Egg {
-  hatchingTime: number;
-  name: string;
-  no: number;
-
-  constructor(hatchingTime: number, name: string, no: number) {
-    this.hatchingTime = hatchingTime;
-    this.name = name;
-    this.no = no;
 
   }
 
+  public hatch(egg: Egg) {
+    this.pokemonService.hatch(egg).subscribe(() => {
+        console.log("oeuf = ", egg);
+      }
+    )
+    this.pokemonService.removeEgg(egg.id).subscribe(() => {
+      console.log("oeuf = ", egg);
+    });
+  }
 }

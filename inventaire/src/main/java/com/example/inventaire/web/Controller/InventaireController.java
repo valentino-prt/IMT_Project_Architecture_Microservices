@@ -28,7 +28,7 @@ public class InventaireController {
     public @ResponseBody Egg addEgg(
             @RequestParam Integer hatchingTime,
             @RequestParam String name,
-            @RequestParam Integer no) {
+            @RequestParam String no) {
         final Egg egg = new Egg();
         egg.setName(name);
         egg.setHatchingTime(hatchingTime);

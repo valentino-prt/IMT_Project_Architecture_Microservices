@@ -10,30 +10,30 @@ public class Egg {
     private Integer id;
     private String name;
     private Integer hatchingTime;
-    private Integer No;
+    private String No;
 
-    public Integer getNo() {
+    public String getNo() {
         return No;
     }
 
-    public void setNo(Integer no) {
+    public void setNo(String no) {
         No = no;
-    }
-
-    public void setHatchingTime(Integer hatchingTime) {
-        this.hatchingTime = hatchingTime;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Integer getHatchingTime() {
         return hatchingTime;
+    }
+
+    public void setHatchingTime(Integer hatchingTime) {
+        this.hatchingTime = hatchingTime;
     }
 
     public Integer getId() {
