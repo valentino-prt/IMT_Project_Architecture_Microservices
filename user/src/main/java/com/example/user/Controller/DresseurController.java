@@ -25,7 +25,7 @@ public class DresseurController {
         final Dresseur dresseur = new Dresseur();
         dresseur.setLevel(level);
         dresseur.setXp(xp);
-        dresseur.setName(name);
+        dresseur.setName("Manny42");
         dresseur.setGold(gold);
         return dresseurService.save(dresseur);
     }

@@ -1,5 +1,6 @@
 package com.example.store.web.controller;
 
+import com.example.store.web.service.RandomGeneratorService;
 import com.example.store.web.service.StoreService;
 import com.example.store.web.model.Egg;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,19 @@ public class StoreController {
     @GetMapping(path = "/get/{id}")
     public @ResponseBody Egg getPrice(@PathVariable int id){
         return storeService.getById(id);
+    }
+    @Autowired
+    private RandomGeneratorService randomGeneratorService;
+
+    @GetMapping("/get_egg")
+    public @ResponseBody Egg getEgg() {
+        // This returns a JSON or XML with the users
+        return randomGeneratorService.getEgg();
+    }
+    @PostMapping("/list_egg")
+    public @ResponseBody List<Egg> listegg(
+            @RequestParam Integer size){
+        return randomGeneratorService.getListEgg(size);
     }
 
 }

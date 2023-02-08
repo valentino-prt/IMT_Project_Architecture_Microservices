@@ -9,7 +9,6 @@ public class Egg {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "egg_generator")
     @SequenceGenerator(name = "egg_seq", sequenceName = "egg_seq", allocationSize = 1)
 
-    private Integer id;
     private String name;
 
 
@@ -32,7 +31,7 @@ public class Egg {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = "Oeuf de " + name;
     }
 
     public String getName() {
@@ -60,11 +59,4 @@ public class Egg {
         return level;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

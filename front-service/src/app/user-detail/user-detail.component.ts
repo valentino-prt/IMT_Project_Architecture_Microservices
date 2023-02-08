@@ -7,7 +7,7 @@ import {TrainerService} from "../trainer.service";
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  trainer: Trainer = new Trainer(0, "Sacha", 0, 0, 0);
+  trainer: Trainer = new Trainer(0, "Manny42", 1, 150, 0);
 
   constructor(private traineService: TrainerService) {
   }
