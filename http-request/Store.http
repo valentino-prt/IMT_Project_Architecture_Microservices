@@ -9,13 +9,6 @@ Content-Type: application/json
   "hatchingTime" : 12
 }
 
-### Send Get all
-GET http://localhost:8083/all
+### Post request to have list of 4 random eggs
 
-###
-DELETE http://localhost:8083/1
-
-###
-GET http://localhost:8083/get/2
-
-
+POST http://localhost:8084/list_egg?size=4
