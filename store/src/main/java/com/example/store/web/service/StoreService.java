@@ -36,20 +36,24 @@ public class StoreService {
 
     }
 
-    public List<Egg> getListEgg(){
+    public List<Egg> generateListEgg(){
         List<Egg> listegg = new ArrayList<Egg>();
-        for(int i=0; i<6; i++){
-            Egg egg = new Egg();
-            egg.setHatchingTime(this.getRandomInteger(50));
-            egg.setLevel(this.getRandomInteger(100));
-            egg.setPrice(this.getRandomInteger(150));
-            String[] noAndName = this.getRandomName();
-            egg.setNo(Integer.valueOf(noAndName[0]));
-            egg.setName(noAndName[1]);
-            listegg.add(i,egg);
-            storeRepository.save(egg);
+
+        if(storeRepository.count() >= 6){
+            System.out.println("Le marché est limité à 6 oeufs");
+        }else {
+                for (int i = 0; i < 6; i++) {
+                Egg egg = new Egg();
+                egg.setHatchingTime(this.getRandomInteger(50));
+                egg.setLevel(this.getRandomInteger(100));
+                egg.setPrice(this.getRandomInteger(150));
+                String[] noAndName = this.getRandomName();
+                egg.setNo(noAndName[0]);
+                egg.setName(noAndName[1]);
+                listegg.add(i, egg);
+                storeRepository.save(egg);
+            }
         }
-        System.out.println(listegg);
         return listegg;
     }
     private Integer getRandomInteger(Integer max){
@@ -60,7 +64,6 @@ public class StoreService {
     private String[] getRandomName(){
         String str = pokemonNames.get(this.getRandomInteger(pokemonNames.size()-1));
         String[] noAndName = str.split(COMMA_DELIMITER);
-
         return noAndName;
     }
 
@@ -71,6 +74,11 @@ public class StoreService {
     public void removeEgg(Integer id){
         storeRepository.deleteById(id);
     }
+
+    public void deleteAllEgg(){
+        storeRepository.deleteAll();
+    }
+
 
     public Egg getById(Integer id){
 

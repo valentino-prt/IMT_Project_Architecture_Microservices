@@ -18,7 +18,7 @@ public class Egg {
 
     private Integer level;
 
-    private Integer No;
+    private String No;
     public Integer getId() {
         return id;
     }
@@ -26,11 +26,11 @@ public class Egg {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Integer getNo() {
+    public String getNo() {
         return No;
     }
 
-    public void setNo(Integer no) {
+    public void setNo(String no) {
         No = no;
     }
     public void setHatchingTime(Integer hatchingTime) {

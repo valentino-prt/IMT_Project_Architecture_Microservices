@@ -37,7 +37,12 @@ public class StoreController {
 
     @GetMapping("/list_egg")
     public @ResponseBody List<Egg> listegg() {
-        return storeService.getListEgg();
+        return storeService.generateListEgg();
+    }
+
+    @DeleteMapping("/delete_all")
+    public @ResponseBody void delete_all() {
+         storeService.deleteAllEgg();
     }
 
 }
