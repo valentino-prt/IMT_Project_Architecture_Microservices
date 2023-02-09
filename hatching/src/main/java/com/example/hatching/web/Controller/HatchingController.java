@@ -26,15 +26,13 @@ public class HatchingController {
     public @ResponseBody Egg addEggs(
             @RequestParam String name,
             @RequestParam Integer hatchingTime,
-            @RequestParam String No) {
-        // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
+            @RequestParam String no) {
         final Egg egg = new Egg();
         egg.setName(name);
         egg.setHatchingTime(hatchingTime);
         Date date = new Date();
         egg.setDateDeposit(date);
-        egg.setNo(No);
+        egg.setNo(no);
         return hatchingService.save(egg);
     }
 

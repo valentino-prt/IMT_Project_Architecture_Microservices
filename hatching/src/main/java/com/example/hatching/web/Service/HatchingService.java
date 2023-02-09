@@ -40,7 +40,7 @@ public class HatchingService {
 
         for(Egg egg : oeuf){
             int minute = egg.getDateDeposit().getMinutes();
-            int newMinute = egg.getHatchingTime()/2 + minute;
+            int newMinute = egg.getHatchingTime() + minute;
             Date evolution = egg.getDateDeposit();
             evolution.setMinutes(newMinute);
             Date dateNow = new Date();
@@ -55,7 +55,6 @@ public class HatchingService {
                 generatedPokemon.setName(eggName[2]);
                 generatedPokemon.setNo(egg.getNo());
                 generatedPokemon.setLevel(int_random);
-                System.out.println(egg.getName() +" éclot en Pokémon : " + generatedPokemon.getName() + " de niveau : " + generatedPokemon.getLevel());
                 hatchingRepository.delete(egg);
                 sendMessage(generatedPokemon);
 

@@ -38,7 +38,7 @@ public class Egg {
     }
 
     public void setName(String name) {
-        this.name = "Oeuf de " + name;
+        this.name = name;
     }
 
     public String getName() {

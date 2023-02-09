@@ -38,30 +38,24 @@ public class InventaireController {
 
     @GetMapping("/pokemons")
     public @ResponseBody Iterable<Pokemon> getAllPokemon() {
-        // This returns a JSON or XML with the users
         return inventaireService.getAllPokemons();
     }
 
     @GetMapping("/eggs")
     public @ResponseBody Iterable<Egg> getAllEggs() {
-        // This returns a JSON or XML with the users
         return inventaireService.getAllEggs();
     }
 
     @DeleteMapping("/delete_pokemon")
-    public @ResponseBody String deletePokemon(
+    public @ResponseBody void deletePokemon(
             @RequestParam Integer id) {
-        // This returns a JSON or XML with the users
         inventaireService.deletePokemon(id);
-        return "OK";
     }
 
     @DeleteMapping("/delete_egg")
-    public @ResponseBody String deleteEgg(
+    public @ResponseBody void deleteEgg(
             @RequestParam Integer id) {
-        // This returns a JSON or XML with the users
         inventaireService.deleteEgg(id);
-        return "OK";
     }
 }
 
