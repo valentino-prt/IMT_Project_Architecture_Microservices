@@ -47,10 +47,9 @@ public class StoreController {
         // This returns a JSON or XML with the users
         return randomGeneratorService.getEgg();
     }
-    @PostMapping("/list_egg")
-    public @ResponseBody List<Egg> listegg(
-            @RequestParam Integer size){
-        return randomGeneratorService.getListEgg(size);
+    @GetMapping("/list_egg")
+    public @ResponseBody List<Egg> listegg(){
+        return randomGeneratorService.getListEgg();
     }
 
 }

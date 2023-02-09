@@ -41,9 +41,9 @@ public class RandomGeneratorService {
         egg.setName(noAndName[1]);
         return egg;
     }
-    public List<Egg> getListEgg(Integer size){
+    public List<Egg> getListEgg(){
         List<Egg> listegg = new ArrayList<Egg>();
-        for(int i=0; i<size; i++){
+        for(int i=0; i<6; i++){
             Egg egg = new Egg();
             egg.setHatchingTime(this.getRandomInteger(50));
             egg.setLevel(this.getRandomInteger(100));
