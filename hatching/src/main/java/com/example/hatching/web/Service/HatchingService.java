@@ -40,7 +40,7 @@ public class HatchingService {
 
         for(Egg egg : oeuf){
             int sec = egg.getDateDeposit().getSeconds();
-            int second = egg.getHatchingTime() + sec;
+            int second = egg.getHatchingTime()*60 + sec;
             Date evolution = egg.getDateDeposit();
             evolution.setSeconds(second);
             Date dateNow = new Date();
