@@ -11,7 +11,7 @@ DELETE http://localhost:8081/delete_egg?id=1
 GET http://localhost:8081/pokemons
 
 ### add pokemon
-POST http://localhost:8081/add_pokemon?name=miaouss&level=15
+POST http://localhost:8081/add_pokemon?name=miaouss&level=15&no=201
 
 ### add egg from hatching service
 POST localhost:8082/egg?name=Métamorph&hatchingTime=1&No=012

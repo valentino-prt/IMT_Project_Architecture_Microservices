@@ -54,4 +54,14 @@ public class DresseurService {
         dresserRepository.save(dresseur);
         return dresseur;
     }
+    public Dresseur watchLevel(Integer id){
+        Dresseur dresseur = dresserRepository.findDresseurById(id);
+        Integer xp = dresseur.getXp();
+        Integer lvl = xp /100;
+        if(dresseur.getLevel() < lvl){
+            dresseur.setLevel(lvl);
+            dresserRepository.save(dresseur);
+        }
+        return dresseur;
+    }
 }

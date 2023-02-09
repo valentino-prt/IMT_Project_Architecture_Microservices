@@ -17,16 +17,15 @@ public class DresseurController {
     @PostMapping("/add_dresseur")
     public @ResponseBody Dresseur addDresseur(
             @RequestParam String name,
-            @RequestParam Integer level,
             @RequestParam Integer gold,
             @RequestParam Integer xp) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         final Dresseur dresseur = new Dresseur();
-        dresseur.setLevel(level);
         dresseur.setXp(xp);
         dresseur.setName("Manny42");
         dresseur.setGold(gold);
+        dresseur.setLevel(xp/100);
         return dresseurService.save(dresseur);
     }
 
@@ -61,12 +60,11 @@ public class DresseurController {
     }
 
     @PutMapping("/add_xp")
-    public @ResponseBody Dresseur addXp(
+    public @ResponseBody void addXp(
             @RequestParam Integer id,
             @RequestParam Integer amount) {
-        // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
-        return dresseurService.addXp(id, amount);
+        dresseurService.addXp(id, amount);
+        dresseurService.watchLevel(id);
     }
 
     @PutMapping("/remove_gold")
