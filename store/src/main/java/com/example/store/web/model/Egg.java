@@ -5,13 +5,13 @@ import org.springframework.core.SpringVersion;
 
 @Entity
 public class Egg {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "egg_generator")
     @SequenceGenerator(name = "egg_seq", sequenceName = "egg_seq", allocationSize = 1)
-
+    private Integer id;
     private String name;
-
-
 
     private Integer hatchingTime;
     private Integer price;
@@ -19,6 +19,13 @@ public class Egg {
     private Integer level;
 
     private Integer No;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public Integer getNo() {
         return No;
     }
