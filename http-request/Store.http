@@ -6,9 +6,13 @@ Content-Type: application/json
   "name": "Dracofeu",
   "level": 2,
   "price": 123,
-  "hatchingTime" : 12
+  "hatchingTime": 12
 }
 
 ### Post request to have list of 4 random eggs
 
 POST http://localhost:8084/list_egg?size=4
+
+### Get request to have list of 4 random eggs
+GET localhost:8084/list_egg
+

@@ -21,7 +21,7 @@ export class MarketService {
   }
 
   getPokemonsForSell(): Observable<PokemonForSale[]> {
-    return this.getData<PokemonForSale[]>('http://localhost:8081/pokemons');
+    return this.getData<PokemonForSale[]>(`http://localhost:8084/list_egg`);
   }
 
   removePokemon(id: number) {

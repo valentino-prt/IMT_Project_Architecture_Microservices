@@ -30,6 +30,15 @@ export class TrainerService {
     return this.http.post<Trainer>('http://localhost:8080/add_gold', money);
   }
 
+  addTrainer(trainerList: Trainer[]): Observable<Trainer> {
+    return this.http.post<Trainer>('http://localhost:8080/add_dresseurs', trainerList[0]);
+  }
+
+  subMoney(money: number): Observable<Trainer> {
+    //Request is not working
+    return this.http.post<Trainer>('http://localhost:8080/sub_gold', money);
+  }
+
 }
 
 

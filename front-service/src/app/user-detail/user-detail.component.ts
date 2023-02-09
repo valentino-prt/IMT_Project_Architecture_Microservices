@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TrainerService} from "../trainer.service";
+import {NONE_TYPE} from "@angular/compiler";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-user-detail',
@@ -7,7 +9,7 @@ import {TrainerService} from "../trainer.service";
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  trainer: Trainer = new Trainer(0, "Manny42", 1, 150, 0);
+  trainer: Trainer = new Trainer(0, "", 0, 0, 0)
 
   constructor(private traineService: TrainerService) {
   }
