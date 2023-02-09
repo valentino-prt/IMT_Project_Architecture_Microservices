@@ -39,10 +39,10 @@ public class HatchingService {
         List<Egg> oeuf = (List<Egg>) hatchingRepository.findAll();
 
         for(Egg egg : oeuf){
-            int minute = egg.getDateDeposit().getMinutes();
-            int newMinute = egg.getHatchingTime() + minute;
+            int sec = egg.getDateDeposit().getSeconds();
+            int second = egg.getHatchingTime() + sec;
             Date evolution = egg.getDateDeposit();
-            evolution.setMinutes(newMinute);
+            evolution.setSeconds(second);
             Date dateNow = new Date();
             if(evolution.getTime() <= dateNow.getTime())
             {
@@ -50,9 +50,9 @@ public class HatchingService {
 
                 int int_random = rand.nextInt(100);
 
-                String[] eggName = egg.getName().split(" ");
+                String eggName = egg.getName();
                 Pokemon generatedPokemon = new Pokemon();
-                generatedPokemon.setName(eggName[2]);
+                generatedPokemon.setName(eggName);
                 generatedPokemon.setNo(egg.getNo());
                 generatedPokemon.setLevel(int_random);
                 hatchingRepository.delete(egg);
