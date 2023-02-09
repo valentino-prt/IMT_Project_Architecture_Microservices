@@ -37,15 +37,14 @@ public class DresseurService {
         return dresseur;
     }
 
-    public Dresseur removeGold(Integer id, Integer amout) {
+    public String removeGold(Integer id, Integer amout) {
         Dresseur dresseur = dresserRepository.findDresseurById(id);
         if (dresseur.getGold() - amout < 0) {
-            dresseur.setGold(0);
-        } else {
-            dresseur.setGold(dresseur.getGold() - amout);
+            return "Failed not enough money";
         }
+        dresseur.setGold(dresseur.getGold() - amout);
         dresserRepository.save(dresseur);
-        return dresseur;
+        return "OK";
     }
 
     public Dresseur addXp(Integer id, Integer amout) {

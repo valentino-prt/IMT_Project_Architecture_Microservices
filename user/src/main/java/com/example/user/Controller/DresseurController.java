@@ -68,7 +68,7 @@ public class DresseurController {
     }
 
     @PutMapping("/remove_gold")
-    public @ResponseBody Dresseur removeGold(
+    public @ResponseBody String removeGold(
             @RequestParam Integer id,
             @RequestParam Integer amount) {
         // @ResponseBody means the returned String is the response, not a view name
