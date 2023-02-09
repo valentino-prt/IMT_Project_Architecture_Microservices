@@ -17,8 +17,6 @@ public class StoreController {
     public Boolean refreshStore() {
         return null;
     }
-
-
     @GetMapping(path = "/all")
     public @ResponseBody Iterable<Egg> getEggToSell() {
         // This returns a JSON or XML with the users
@@ -33,11 +31,6 @@ public class StoreController {
     @GetMapping(path = "/get_egg")
     public @ResponseBody Egg getPrice(@RequestParam int id) {
         return storeService.getById(id);
-    }
-
-    @GetMapping("/list_egg")
-    public @ResponseBody List<Egg> listegg() {
-        return storeService.generateListEgg();
     }
 
     @DeleteMapping("/delete_all")

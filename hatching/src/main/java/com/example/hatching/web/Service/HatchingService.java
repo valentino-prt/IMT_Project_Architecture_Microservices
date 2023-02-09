@@ -35,7 +35,7 @@ public class HatchingService {
 
 
     @Scheduled(fixedRate = 5000)
-    public void reportCurrentTime() {
+    public void watchEgg() {
         List<Egg> oeuf = (List<Egg>) hatchingRepository.findAll();
 
         for(Egg egg : oeuf){

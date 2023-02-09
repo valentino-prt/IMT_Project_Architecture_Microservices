@@ -3,6 +3,8 @@ package com.example.store.web.service;
 import com.example.store.web.model.Egg;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.store.web.Repository.StoreRepository;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -13,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
+@EnableScheduling
 @Service
 public class StoreService {
 
@@ -34,27 +37,6 @@ public class StoreService {
         }
         this.pokemonNames = records;
 
-    }
-
-    public List<Egg> generateListEgg(){
-        List<Egg> listegg = new ArrayList<Egg>();
-
-        if(storeRepository.count() >= 6){
-            System.out.println("Le marché est limité à 6 oeufs");
-        }else {
-                for (int i = 0; i < 6; i++) {
-                Egg egg = new Egg();
-                egg.setHatchingTime(this.getRandomInteger(50));
-                egg.setLevel(this.getRandomInteger(100));
-                egg.setPrice(this.getRandomInteger(150));
-                String[] noAndName = this.getRandomName();
-                egg.setNo(noAndName[0]);
-                egg.setName(noAndName[1]);
-                listegg.add(i, egg);
-                storeRepository.save(egg);
-            }
-        }
-        return listegg;
     }
     private Integer getRandomInteger(Integer max){
         Random rand = new Random();
@@ -89,5 +71,23 @@ public class StoreService {
             return null;
         }
     }
+    @Scheduled(fixedRate = 60000)
+    public void generateListEgg(){
 
+        if(storeRepository.count() >= 6){
+                storeRepository.deleteAll();
+        }
+        List<Egg> listegg = new ArrayList<Egg>();
+        for (int i = 0; i < 6; i++) {
+            Egg egg = new Egg();
+            egg.setHatchingTime(this.getRandomInteger(50));
+            egg.setLevel(this.getRandomInteger(100));
+            egg.setPrice(this.getRandomInteger(150));
+            String[] noAndName = this.getRandomName();
+            egg.setNo(noAndName[0]);
+            egg.setName(noAndName[1]);
+            listegg.add(i, egg);
+            storeRepository.save(egg);
+            }
+    }
 }
