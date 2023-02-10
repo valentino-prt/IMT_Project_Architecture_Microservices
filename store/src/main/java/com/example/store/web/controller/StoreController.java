@@ -17,23 +17,25 @@ public class StoreController {
     public Boolean refreshStore() {
         return null;
     }
-    @GetMapping(path = "/all")
+    @GetMapping(path = "/getAllEggToBuy")
     public @ResponseBody Iterable<Egg> getEggToSell() {
         // This returns a JSON or XML with the users
         return storeService.getAllEgg();
     }
 
-    @DeleteMapping("/remove")
+    @DeleteMapping("/removeEgg")
     public @ResponseBody void removeSoldEgg(@RequestParam int id) {
         storeService.removeEgg(id);
     }
 
-    @GetMapping(path = "/get_egg")
-    public @ResponseBody Egg getPrice(@RequestParam int id) {
-        return storeService.getById(id);
+
+    @GetMapping(path = "/getPriceEgg")
+    public @ResponseBody Integer getPrice(@RequestParam int id) {
+        Egg egg = storeService.getById(id);
+        return egg.getPrice();
     }
 
-    @DeleteMapping("/delete_all")
+    @DeleteMapping("/deleteAllEgg")
     public @ResponseBody void delete_all() {
          storeService.deleteAllEgg();
     }

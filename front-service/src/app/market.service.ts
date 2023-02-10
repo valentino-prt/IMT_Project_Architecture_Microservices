@@ -21,12 +21,12 @@ export class MarketService {
   }
 
   getPokemonsForSell(): Observable<PokemonForSale[]> {
-    return this.getData<PokemonForSale[]>(`http://localhost:8084/all`);
+    return this.getData<PokemonForSale[]>(`http://localhost:8084/getAllEggToBuy`);
   }
 
   removePokemon(id: number) {
     // TODO: change url
-    return this.http.delete(`http://localhost:8084/remove?id=${id}`, {observe: 'response'}).pipe(
+    return this.http.delete(`http://localhost:8084/removeEgg?id=${id}`, {observe: 'response'}).pipe(
       tap((response) => {
         if (response.status === 200) {
           console.log('The Pokemon was successfully deleted.');

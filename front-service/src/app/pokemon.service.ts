@@ -35,7 +35,7 @@ export class PokemonService {
   }
 
   removePokemon(id: number) {
-    return this.http.delete(`http://localhost:8081/delete_pokemon?id=${id}`, {observe: 'response'}).pipe(
+    return this.http.delete(`http://localhost:8081/deletePokemon?id=${id}`, {observe: 'response'}).pipe(
       tap((response) => {
         if (response.status === 200) {
           console.log('The Pokemon was successfully deleted.');
@@ -51,7 +51,7 @@ export class PokemonService {
   }
 
   removeEgg(id: number) {
-    return this.http.delete(`http://localhost:8081/delete_egg?id=${id}`, {observe: 'response'}).pipe(
+    return this.http.delete(`http://localhost:8081/deleteEgg?id=${id}`, {observe: 'response'}).pipe(
       tap((response) => {
         if (response.status === 200) {
           console.log('The Egg was successfully deleted.');
@@ -67,15 +67,9 @@ export class PokemonService {
   }
 
   hatch(egg: Egg) {
-    return this.http.post(`http://localhost:8082/egg?name=${egg.name}&no=${egg.no}&hatchingTime=${egg.hatchingTime}`, {observe: 'response'}).pipe(
+    return this.http.post(`http://localhost:8082/addEgg?name=${egg.name}&no=${egg.no}&hatchingTime=${egg.hatchingTime}`, {observe: 'response'}).pipe(
       tap((response) => {
-        console.log(response); //je n'arrive pas à accéder au properties de l'objet response
-        //this.http.delete(`http://localhost:8081/delete_egg?id=${response.valueOf()}`)
-        /*if (response === 200) {
-          console.log('Egg was successfully add to hatching service.');
-        } else {
-          console.error('An error occurred while add egg to hatching service.');
-        }*/
+        console.log(response);
       }),
       catchError((error) => {
         console.error(error);
@@ -86,7 +80,7 @@ export class PokemonService {
   }
 
   addEgg(egg: Egg) {
-    return this.http.post<any>(`http://localhost:8081/add_egg?name=${egg.name}&no=${egg.no}&hatchingTime=${egg.hatchingTime}`, {observe: 'response'}).pipe(
+    return this.http.post<any>(`http://localhost:8081/addEgg?name=${egg.name}&no=${egg.no}&hatchingTime=${egg.hatchingTime}`, {observe: 'response'}).pipe(
       tap((response) => {
         if (response.status === 200) {
           console.log('Egg was successfully added.');

@@ -1,18 +1,14 @@
-### Send POST request with json body
-POST http://localhost:8084/add
-Content-Type: application/json
+### Get post to see all egg to buy
 
-{
-  "name": "Dracofeu",
-  "level": 2,
-  "price": 123,
-  "hatchingTime": 12
-}
+GET http://localhost:8084/getAllEggToBuy
 
-### Post request to have list of 4 random eggs
+### Delete request for remove one egg
+DELETE http://localhost:8084/removeEgg?id=30
 
-POST http://localhost:8084/list_egg?size=4
+### Get post to have price of one egg
 
-### Get request to have list of 4 random eggs
-GET localhost:8084/list_egg
+GET http://localhost:8084/getPriceEgg?id=6
 
+### Delete request for remove all eggs in store
+
+DELETE http://localhost:8084/deleteAllEgg

@@ -22,7 +22,7 @@ public class HatchingController {
     @Autowired
     private Sender sender;
 
-    @PostMapping("/egg")
+    @PostMapping("/addEgg")
     public @ResponseBody Egg addEggs(
             @RequestParam String name,
             @RequestParam Integer hatchingTime,

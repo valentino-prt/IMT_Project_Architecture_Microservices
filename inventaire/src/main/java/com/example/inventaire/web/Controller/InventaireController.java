@@ -12,7 +12,7 @@ public class InventaireController {
     @Autowired
     private InventaireService inventaireService;
 
-    @PostMapping("/add_pokemon")
+    @PostMapping("/addPokemon")
     public @ResponseBody Pokemon addPokemon(
             @RequestParam Integer level,
             @RequestParam String name,
@@ -24,7 +24,7 @@ public class InventaireController {
         return inventaireService.savePokemon(pokemon);
     }
 
-    @PostMapping("/add_egg")
+    @PostMapping("/addEgg")
     public @ResponseBody Egg addEgg(
             @RequestParam Integer hatchingTime,
             @RequestParam String name,
@@ -46,13 +46,13 @@ public class InventaireController {
         return inventaireService.getAllEggs();
     }
 
-    @DeleteMapping("/delete_pokemon")
+    @DeleteMapping("/deletePokemon")
     public @ResponseBody void deletePokemon(
             @RequestParam Integer id) {
         inventaireService.deletePokemon(id);
     }
 
-    @DeleteMapping("/delete_egg")
+    @DeleteMapping("/deleteEgg")
     public @ResponseBody void deleteEgg(
             @RequestParam Integer id) {
         inventaireService.deleteEgg(id);
