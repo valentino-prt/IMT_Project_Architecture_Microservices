@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TrainerService} from "../trainer.service";
 import {NONE_TYPE} from "@angular/compiler";
 import {Observable} from "rxjs";
+import {MyPokemon} from "../pokemon/pokemon.component";
 
 @Component({
   selector: 'app-user-detail',
@@ -9,15 +10,22 @@ import {Observable} from "rxjs";
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  trainer: Trainer = new Trainer(0, "", 0, 0, 0)
+  trainerList: Trainer[] = [];
 
-  constructor(private traineService: TrainerService) {
+  constructor(private trainerService: TrainerService) {
+    let trainer = new Trainer(0, "Manny42", 1, 200, 0);
+    this.trainerService.addTrainer(trainer).subscribe(() => {
+      console.log("trainer ajouté");
+    });
   }
 
   ngOnInit() {
-    this.traineService.getTrainer().subscribe(trainer => {
-      this.trainer = trainer;
-    })
+    setInterval(() => {
+      this.trainerService.getTrainers().subscribe(trainers => {
+        this.trainerList = trainers;
+      });
+    }, 1000)
+
   }
 
 }

@@ -3,12 +3,12 @@
     <div class="col-4 col-md-2">
       <img alt="dressor" class="img-fluid rounded-start p-3 " src="/assets/images/dressor.png" style="height: 250px">
     </div>
-    <div *ngIf="trainer" class="col-6 col-md-8">
+    <div *ngIf="trainerList && trainerList.length > 0" class="col-6 col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{trainer.name}}</h5>
-        <p class="card-text">level : {{trainer.level}}</p>
-        <p class="card-text">gold : {{trainer.gold}}</p>
-        <p class="card-text">XP : {{trainer.xp}}</p>
+        <h5 class="card-title">{{trainerList[0].name}}</h5>
+        <p class="card-text">level : {{trainerList[0].level}}</p>
+        <p class="card-text">gold : {{trainerList[0].gold}}</p>
+        <p class="card-text">XP : {{trainerList[0].xp}}</p>
       </div>
     </div>
   </div>

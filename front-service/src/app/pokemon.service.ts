@@ -67,7 +67,7 @@ export class PokemonService {
   }
 
   hatch(egg: Egg) {
-    return this.http.post(`http://localhost:8082/egg?name=${egg.name}&No=${egg.no}&hatchingTime=${egg.hatchingTime}`, {observe: 'response'}).pipe(
+    return this.http.post(`http://localhost:8082/egg?name=${egg.name}&no=${egg.no}&hatchingTime=${egg.hatchingTime}`, {observe: 'response'}).pipe(
       tap((response) => {
         console.log(response); //je n'arrive pas à accéder au properties de l'objet response
         //this.http.delete(`http://localhost:8081/delete_egg?id=${response.valueOf()}`)
@@ -83,6 +83,22 @@ export class PokemonService {
       })
     );
 
+  }
+
+  addEgg(egg: Egg) {
+    return this.http.post<any>(`http://localhost:8081/add_egg?name=${egg.name}&no=${egg.no}&hatchingTime=${egg.hatchingTime}`, {observe: 'response'}).pipe(
+      tap((response) => {
+        if (response.status === 200) {
+          console.log('Egg was successfully added.');
+        } else {
+          console.error('An error occurred while adding egg.');
+        }
+      }),
+      catchError((error) => {
+        console.error(error);
+        return of(error);
+      })
+    );
   }
 
 

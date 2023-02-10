@@ -5,6 +5,7 @@ import com.example.user.Service.DresseurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 @RestController()
@@ -25,7 +26,7 @@ public class DresseurController {
         dresseur.setXp(xp);
         dresseur.setName("Manny42");
         dresseur.setGold(gold);
-        dresseur.setLevel(xp/100);
+        dresseur.setLevel(xp / 100);
         return dresseurService.save(dresseur);
     }
 
@@ -68,7 +69,7 @@ public class DresseurController {
     }
 
     @PutMapping("/remove_gold")
-    public @ResponseBody String removeGold(
+    public @ResponseBody Map<String, String> removeGold(
             @RequestParam Integer id,
             @RequestParam Integer amount) {
         // @ResponseBody means the returned String is the response, not a view name

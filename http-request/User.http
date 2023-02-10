@@ -8,10 +8,10 @@ GET http://localhost:8080/dresseurs
 DELETE http://localhost:8080/delete_dresseur?id=1
 
 ### add gold
-PUT http://localhost:8080/add_gold?id=1&amount=15
+PUT http://localhost:8080/add_gold?id=1&amount=1000
 
 ### remove gold
-PUT http://localhost:8080/remove_gold?id=1&amount=15
+PUT http://localhost:8080/remove_gold?id=1&amount=696
 
 ### add xp
 PUT http://localhost:8080/add_xp?id=1&amount=15

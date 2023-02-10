@@ -7,6 +7,8 @@ import {Trainer} from "./user-detail/user-detail.component";
   providedIn: 'root'
 })
 export class TrainerService {
+  transactionStatus: boolean = Boolean(0);
+
 
   constructor(private http: HttpClient) {
   }
@@ -21,22 +23,76 @@ export class TrainerService {
     );
   }
 
-  getTrainer(): Observable<Trainer> {
-    return this.getData<Trainer>('http://localhost:8080/dresseurs');
+  getTrainers(): Observable<Trainer[]> {
+    return this.getData<Trainer[]>('http://localhost:8080/dresseurs');
   }
 
-  addMoney(money: number): Observable<Trainer> {
+  addMoney(price: number): Observable<Trainer> {
     //Request is not working
-    return this.http.post<Trainer>('http://localhost:8080/add_gold', money);
+    return this.http.put<any>(`http://localhost:8080/add_gold?id=1&amount=${price}`, {observe: 'response'}).pipe(
+      tap((response) => {
+        if (response.status === 200) {
+          console.log('Money was successfully added.');
+        } else {
+          console.error('An error occurred while adding Money.');
+        }
+      }),
+      catchError((error) => {
+        console.error(error);
+        return of(error);
+      })
+    )
+
   }
 
-  addTrainer(trainerList: Trainer[]): Observable<Trainer> {
-    return this.http.post<Trainer>('http://localhost:8080/add_dresseurs', trainerList[0]);
-  }
-
-  subMoney(money: number): Observable<Trainer> {
+  subMoney(price: number): Observable<Trainer> {
     //Request is not working
-    return this.http.post<Trainer>('http://localhost:8080/sub_gold', money);
+    return this.http.put<any>(`http://localhost:8080/remove_gold?id=1&amount=${price}`, {}).pipe(
+      tap((response) => {
+        console.log(response.message);
+        this.transactionStatus = response.status === "success";
+      }),
+      catchError((error) => {
+        console.error(error);
+        return of(error);
+      })
+    )
+
+  }
+
+  addXP(xp: number): Observable<Trainer> {
+    //Request is not working
+    return this.http.put<any>(`http://localhost:8080/add_xp?id=1&amount=${xp}`, {observe: 'response'}).pipe(
+      tap((response) => {
+        if (response.status === 200) {
+          console.log('XP was successfully added.');
+        } else {
+          console.error('An error occurred while adding XP.');
+        }
+      }),
+      catchError((error) => {
+        console.error(error);
+        return of(error);
+      })
+    )
+
+  }
+
+
+  addTrainer(trainer: Trainer) {
+    return this.http.post<any>(`http://localhost:8080/add_dresseur?name=${trainer.name}&xp=${trainer.xp}&level=${trainer.level}&gold=${trainer.gold}`, {observe: 'response'}).pipe(
+      tap((response) => {
+        if (response.status === 200) {
+          console.log('User was successfully added.');
+        } else {
+          console.error('An error occurred while adding User.');
+        }
+      }),
+      catchError((error) => {
+        console.error(error);
+        return of(error);
+      })
+    );
   }
 
 }

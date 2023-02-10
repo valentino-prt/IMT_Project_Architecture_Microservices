@@ -21,7 +21,8 @@ export class PokemonComponent implements OnInit {
         this.pokemonList = pokemonList;
         this.pokemonList = this.pokemonList.map(pokemon => {
           return {
-            ...pokemon, picture: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemon.no}.png`
+            ...pokemon,
+            picture: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemon.no}.png`
           }
         })
       });
@@ -62,7 +63,7 @@ export class PokemonForSale extends Pokemon {
 
   constructor(id: number, name: string, no: string, price: number) {
     super(id, name, no);
-    this.price = price;
+    this.price = 100;
     this.picture = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${this.no}.png`
 
   }

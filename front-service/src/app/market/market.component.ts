@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {PokemonForSale} from "../pokemon/pokemon.component";
+import {Egg, PokemonForSale} from "../pokemon/pokemon.component";
 import {MarketService} from "../market.service";
 import {TrainerService} from "../trainer.service";
+import {PokemonService} from "../pokemon.service";
 
 @Component({
   selector: 'app-market',
@@ -11,25 +12,33 @@ import {TrainerService} from "../trainer.service";
 export class MarketComponent implements OnInit {
   pokemonList: PokemonForSale[] = [];
 
-  constructor(private marketService: MarketService, private trainersService: TrainerService) {
+  constructor(private marketService: MarketService, private trainersService: TrainerService, private pokemonService: PokemonService) {
   }
 
   ngOnInit() {
     this.callMarketService();
     setInterval(() => {
       this.callMarketService();
-    }, 10000000)
-
+    }, 1000);
   }
 
   BuyPokemon(pokemon: PokemonForSale) {
-    this.marketService.removePokemon(pokemon.id).subscribe(() => {
-      this.pokemonList = this.pokemonList.filter(p => p.id !== pokemon.id);
-      console.log("pokemon vendu");
-    });
     this.trainersService.subMoney(pokemon.price).subscribe(() => {
-      console.log("argent enlevé");
     });
+    if (this.trainersService.transactionStatus) {
+      this.marketService.removePokemon(pokemon.id).subscribe(() => {
+        this.pokemonList = this.pokemonList.filter(p => p.id !== pokemon.id);
+        console.log("pokemon vendu");
+      });
+      let egg = this.PokemonForSaleToEgg(pokemon);
+      this.pokemonService.addEgg(egg).subscribe(() => {
+        console.log("oeuf ajouté");
+      });
+    } else {
+      console.log("pas assez d'argent");
+    }
+
+
   }
 
   private callMarketService() {
@@ -37,10 +46,15 @@ export class MarketComponent implements OnInit {
       this.pokemonList = pokemonList;
       this.pokemonList = this.pokemonList.map(pokemon => {
         return {
-          ...pokemon, picture: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemon.no}.png`
+          ...pokemon,
+          picture: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemon.no}.png`
         }
       })
     });
   }
 
+  private PokemonForSaleToEgg(pokemon: PokemonForSale) {
+    let randomInt = Math.floor(Math.random() * 10) + 1;
+    return new Egg(pokemon.id, pokemon.name, pokemon.no, randomInt);
+  }
 }
