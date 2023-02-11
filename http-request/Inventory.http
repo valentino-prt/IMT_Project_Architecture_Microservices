@@ -1,26 +1,18 @@
-### get all eggs
-GET http://localhost:8081/eggs
 
 ### add eggs
 POST http://localhost:8081/addEgg?name=bulbizarre&hatchingTime=1&no=001
 
 ### delete egg
-DELETE http://localhost:8081/deleteEgg?id=2
+DELETE http://localhost:8081/deleteEgg?id=9
+
+### add pokemon
+POST http://localhost:8081/addPokemon?name=Tartard&level=99&no=062
+
+### delete pokemon
+DELETE http://localhost:8081/deletePokemon?id=2
 
 ### get all pokemons
 GET http://localhost:8081/pokemons
 
 ### get all eggs
 GET http://localhost:8081/eggs
-
-### add pokemon
-POST http://localhost:8081/addPokemon?name=miaouss&level=15&no=201
-
-### add egg
-POST http://localhost:8081/addEgg?hatchingTime=1&name=miams&no=201
-
-### delete pokemon
-DELETE http://localhost:8081/deletePokemon?id=1
-
-### delete egg
-DELETE http://localhost:8081/deleteEgg?id=1

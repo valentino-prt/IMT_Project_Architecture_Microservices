@@ -33,7 +33,6 @@ export class PokemonComponent implements OnInit {
 
   public sellPokemon(pokemon: MyPokemon) {
     this.trainerService.addMoney(pokemon.level * 10).subscribe(() => {
-      console.log("pokemon vendu");
     })
 
     this.pokemonService.removePokemon(pokemon.id).subscribe(() => {
@@ -63,7 +62,7 @@ export class PokemonForSale extends Pokemon {
 
   constructor(id: number, name: string, no: string, price: number) {
     super(id, name, no);
-    this.price = 100;
+    this.price = price;
     this.picture = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${this.no}.png`
 
   }

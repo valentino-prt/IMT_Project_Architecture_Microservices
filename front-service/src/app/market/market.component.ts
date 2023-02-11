@@ -23,7 +23,6 @@ export class MarketComponent implements OnInit {
   }
 
   BuyPokemon(pokemon: PokemonForSale) {
-    this.trainersService.transactionStatus = false;
     this.trainersService.subMoney(pokemon.price).subscribe(() => {
     });
     if (this.trainersService.transactionStatus) {

@@ -7,7 +7,7 @@
         <div class="card-body">
           <h5 class="card-title">{{pokemon.name}}</h5>
           <p class="card-text">Niveau : {{pokemon.level}}</p>
-          <a (click)="sellPokemon(pokemon)" class="btn btn-primary" href="#">Vendre</a>
+          <a (click)="sellPokemon(pokemon)" class="btn btn-primary" href="#">Vendre : {{pokemon.level * 10}}$</a>
         </div>
       </div>
     </div>

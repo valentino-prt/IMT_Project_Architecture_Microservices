@@ -22,7 +22,7 @@ public class InventaireService {
         pokemonRepository.save(pokemon);
         Map<String, String> response = new HashMap<>();
         response.put("status", "success");
-        response.put("message", "Pokemon added successfully");
+        response.put("message", "Pokemon successfully added to inventory");
         return response;
     }
 
@@ -30,7 +30,7 @@ public class InventaireService {
         eggRepository.save(egg);
         Map<String, String> response = new HashMap<>();
         response.put("status", "success");
-        response.put("message", "Egg added successfully");
+        response.put("message", "Egg successfully added to inventory");
         return response;
     }
 
@@ -46,7 +46,7 @@ public class InventaireService {
         pokemonRepository.deleteById(id);
         Map<String, String> response = new HashMap<>();
         response.put("status", "success");
-        response.put("message", "Pokemon deleted successfully");
+        response.put("message", "Pokemon deleted successfully from inventory");
         return response;
     }
 
@@ -54,7 +54,7 @@ public class InventaireService {
         eggRepository.deleteById(id);
         Map<String, String> response = new HashMap<>();
         response.put("status", "success");
-        response.put("message", "Egg deleted successfully");
+        response.put("message", "Egg deleted successfully from inventory");
         return response;
     }
 

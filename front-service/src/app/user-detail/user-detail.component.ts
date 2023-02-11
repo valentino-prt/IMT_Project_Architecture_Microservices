@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {TrainerService} from "../trainer.service";
-import {NONE_TYPE} from "@angular/compiler";
-import {Observable} from "rxjs";
-import {MyPokemon} from "../pokemon/pokemon.component";
 
 @Component({
   selector: 'app-user-detail',
@@ -15,7 +12,6 @@ export class UserDetailComponent implements OnInit {
   constructor(private trainerService: TrainerService) {
     let trainer = new Trainer(0, "Manny42", 1, 200, 0);
     this.trainerService.addTrainer(trainer).subscribe(() => {
-      console.log("trainer ajouté");
     });
   }
 

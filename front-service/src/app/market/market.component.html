@@ -6,7 +6,7 @@
         <img [src]="pokemon.picture" alt="..." class="card-img-top p-3">
         <div class="card-body">
           <h5 class="card-title">Oeuf de {{pokemon.name}}</h5>
-          <a (click)="BuyPokemon(pokemon)" class="btn btn-primary" href="#">Acheter</a>
+          <a (click)="BuyPokemon(pokemon)" class="btn btn-primary" href="#">Acheter: {{pokemon.price}}$</a>
         </div>
       </div>
 

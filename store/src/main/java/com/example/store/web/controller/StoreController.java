@@ -5,7 +5,7 @@ import com.example.store.web.model.Egg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Map;
 
 @RestController("/eggs")
 @CrossOrigin(origins = "*")
@@ -17,6 +17,7 @@ public class StoreController {
     public Boolean refreshStore() {
         return null;
     }
+
     @GetMapping(path = "/getAllEggToBuy")
     public @ResponseBody Iterable<Egg> getEggToSell() {
         // This returns a JSON or XML with the users
@@ -24,8 +25,8 @@ public class StoreController {
     }
 
     @DeleteMapping("/removeEgg")
-    public @ResponseBody void removeSoldEgg(@RequestParam int id) {
-        storeService.removeEgg(id);
+    public @ResponseBody Map<String, String> removeSoldEgg(@RequestParam int id) {
+        return storeService.removeEgg(id);
     }
 
 
@@ -37,7 +38,7 @@ public class StoreController {
 
     @DeleteMapping("/deleteAllEgg")
     public @ResponseBody void delete_all() {
-         storeService.deleteAllEgg();
+        storeService.deleteAllEgg();
     }
 
 }

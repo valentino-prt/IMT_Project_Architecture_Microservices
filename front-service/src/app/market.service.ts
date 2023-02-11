@@ -10,9 +10,16 @@ export class MarketService {
   constructor(private http: HttpClient) {
   }
 
-  getData<T>(url: string): Observable<T> {
+  getPokemonsForSell(): Observable<PokemonForSale[]> {
+    return this.getRequest<PokemonForSale[]>(`http://localhost:8084/getAllEggToBuy`);
+  }
+
+  removePokemon(id: number) {
+    return this.deleteRequest(`http://localhost:8084/removeEgg?id=${id}`);
+  }
+
+  private getRequest<T>(url: string): Observable<T> {
     return this.http.get<T>(url).pipe(
-      tap((response) => console.table(response)),
       catchError((error) => {
         console.log(error);
         return of([] as T);
@@ -20,26 +27,17 @@ export class MarketService {
     );
   }
 
-  getPokemonsForSell(): Observable<PokemonForSale[]> {
-    return this.getData<PokemonForSale[]>(`http://localhost:8084/getAllEggToBuy`);
-  }
-
-  removePokemon(id: number) {
-    // TODO: change url
-    return this.http.delete(`http://localhost:8084/removeEgg?id=${id}`, {observe: 'response'}).pipe(
+  private deleteRequest(url: string) {
+    return this.http.delete<any>(url, {}).pipe(
       tap((response) => {
-        if (response.status === 200) {
-          console.log('The Pokemon was successfully deleted.');
-        } else {
-          console.error('An error occurred while deleting the Pokemon.');
-        }
+        console.log(response.message);
       }),
       catchError((error) => {
         console.error(error);
         return of(error);
       })
-    );
-
-
+    )
   }
+
+
 }
