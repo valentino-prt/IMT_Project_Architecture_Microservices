@@ -52,7 +52,7 @@ public class DresseurController {
     }
 
     @PutMapping("/add_gold")
-    public @ResponseBody Dresseur addGold(
+    public @ResponseBody Map<String, String> addGold(
             @RequestParam Integer id,
             @RequestParam Integer amount) {
         // @ResponseBody means the returned String is the response, not a view name
@@ -61,11 +61,12 @@ public class DresseurController {
     }
 
     @PutMapping("/add_xp")
-    public @ResponseBody void addXp(
+    public @ResponseBody Map<String, String> addXp(
             @RequestParam Integer id,
             @RequestParam Integer amount) {
-        dresseurService.addXp(id, amount);
+        var response = dresseurService.addXp(id, amount);
         dresseurService.watchLevel(id);
+        return response;
     }
 
     @PutMapping("/remove_gold")

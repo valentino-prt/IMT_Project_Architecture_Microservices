@@ -6,6 +6,8 @@ import com.example.inventaire.web.Service.InventaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController()
 @CrossOrigin(origins = "*")
 public class InventaireController {
@@ -13,7 +15,7 @@ public class InventaireController {
     private InventaireService inventaireService;
 
     @PostMapping("/add_pokemon")
-    public @ResponseBody Pokemon addPokemon(
+    public @ResponseBody Map<String, String> addPokemon(
             @RequestParam Integer level,
             @RequestParam String name,
             @RequestParam String no) {
@@ -25,7 +27,7 @@ public class InventaireController {
     }
 
     @PostMapping("/add_egg")
-    public @ResponseBody Egg addEgg(
+    public @ResponseBody Map<String, String> addEgg(
             @RequestParam Integer hatchingTime,
             @RequestParam String name,
             @RequestParam String no) {
@@ -47,15 +49,15 @@ public class InventaireController {
     }
 
     @DeleteMapping("/delete_pokemon")
-    public @ResponseBody void deletePokemon(
+    public @ResponseBody Map<String, String> deletePokemon(
             @RequestParam Integer id) {
-        inventaireService.deletePokemon(id);
+        return inventaireService.deletePokemon(id);
     }
 
     @DeleteMapping("/delete_egg")
-    public @ResponseBody void deleteEgg(
+    public @ResponseBody Map<String, String> deleteEgg(
             @RequestParam Integer id) {
-        inventaireService.deleteEgg(id);
+        return inventaireService.deleteEgg(id);
     }
 }
 

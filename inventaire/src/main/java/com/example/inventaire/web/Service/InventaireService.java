@@ -7,7 +7,10 @@ import com.example.inventaire.web.Repository.PokemonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Service
 public class InventaireService {
     @Autowired
@@ -15,12 +18,20 @@ public class InventaireService {
     @Autowired
     private EggRepository eggRepository;
 
-    public Pokemon savePokemon(Pokemon pokemon) {
-        return pokemonRepository.save(pokemon);
+    public Map<String, String> savePokemon(Pokemon pokemon) {
+        pokemonRepository.save(pokemon);
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("message", "Pokemon added successfully");
+        return response;
     }
 
-    public Egg saveEgg(Egg egg) {
-        return eggRepository.save(egg);
+    public Map<String, String> saveEgg(Egg egg) {
+        eggRepository.save(egg);
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("message", "Egg added successfully");
+        return response;
     }
 
     public List<Egg> getAllEggs() {
@@ -31,12 +42,20 @@ public class InventaireService {
         return (List<Pokemon>) pokemonRepository.findAll();
     }
 
-    public void deletePokemon(Integer id) {
+    public Map<String, String> deletePokemon(Integer id) {
         pokemonRepository.deleteById(id);
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("message", "Pokemon deleted successfully");
+        return response;
     }
 
-    public void deleteEgg(Integer id) {
+    public Map<String, String> deleteEgg(Integer id) {
         eggRepository.deleteById(id);
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("message", "Egg deleted successfully");
+        return response;
     }
 
     public long countPokemon() {

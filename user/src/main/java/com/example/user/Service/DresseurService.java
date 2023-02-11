@@ -32,11 +32,15 @@ public class DresseurService {
         dresserRepository.deleteById(id);
     }
 
-    public Dresseur addGold(Integer id, Integer amout) {
+    public Map<String, String> addGold(Integer id, Integer amout) {
         Dresseur dresseur = dresserRepository.findDresseurById(id);
         dresseur.setGold(dresseur.getGold() + amout);
         dresserRepository.save(dresseur);
-        return dresseur;
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("message", "Money was successfully added.");
+
+        return response;
     }
 
     public Map<String, String> removeGold(Integer id, Integer amout) {
@@ -56,11 +60,17 @@ public class DresseurService {
         return response;
     }
 
-    public Dresseur addXp(Integer id, Integer amout) {
+    public Map<String, String> addXp(Integer id, Integer amout) {
         Dresseur dresseur = dresserRepository.findDresseurById(id);
         dresseur.setXp(dresseur.getXp() + amout);
         dresserRepository.save(dresseur);
-        return dresseur;
+
+        Map<String, String> response = new HashMap<>();
+
+        response.put("status", "success");
+        response.put("message", "Xp was successfully added.");
+
+        return response;
     }
 
     public Dresseur watchLevel(Integer id) {

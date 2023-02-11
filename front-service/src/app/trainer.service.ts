@@ -47,7 +47,21 @@ export class TrainerService {
 
   subMoney(price: number): Observable<Trainer> {
     //Request is not working
-    return this.http.put<any>(`http://localhost:8080/remove_gold?id=1&amount=${price}`, {}).pipe(
+    return this.putRequest(`http://localhost:8080/remove_gold?id=1&amount=${price}`);
+  }
+
+  addXP(xp: number): Observable<Trainer> {
+    //Request is not working
+    return this.putRequest(`http://localhost:8080/add_xp?id=1&amount=${xp}`);
+
+  }
+
+  addTrainer(trainer: Trainer) {
+    return this.postRequest(`http://localhost:8080/add_dresseur?name=${trainer.name}&gold=${trainer.gold}&xp=${trainer.xp}`);
+  }
+
+  private putRequest(url: string) {
+    return this.http.put<any>(url, {}).pipe(
       tap((response) => {
         console.log(response.message);
         this.transactionStatus = response.status === "success";
@@ -57,42 +71,18 @@ export class TrainerService {
         return of(error);
       })
     )
-
   }
 
-  addXP(xp: number): Observable<Trainer> {
-    //Request is not working
-    return this.http.put<any>(`http://localhost:8080/add_xp?id=1&amount=${xp}`, {observe: 'response'}).pipe(
+  private postRequest(url: string) {
+    return this.http.post<any>(url, {}).pipe(
       tap((response) => {
-        if (response.status === 200) {
-          console.log('XP was successfully added.');
-        } else {
-          console.error('An error occurred while adding XP.');
-        }
+        console.log(response.message);
       }),
       catchError((error) => {
         console.error(error);
         return of(error);
       })
     )
-
-  }
-
-
-  addTrainer(trainer: Trainer) {
-    return this.http.post<any>(`http://localhost:8080/add_dresseur?name=${trainer.name}&xp=${trainer.xp}&level=${trainer.level}&gold=${trainer.gold}`, {observe: 'response'}).pipe(
-      tap((response) => {
-        if (response.status === 200) {
-          console.log('User was successfully added.');
-        } else {
-          console.error('An error occurred while adding User.');
-        }
-      }),
-      catchError((error) => {
-        console.error(error);
-        return of(error);
-      })
-    );
   }
 
 }

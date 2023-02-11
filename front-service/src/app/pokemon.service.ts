@@ -35,19 +35,7 @@ export class PokemonService {
   }
 
   removePokemon(id: number) {
-    return this.http.delete(`http://localhost:8081/delete_pokemon?id=${id}`, {observe: 'response'}).pipe(
-      tap((response) => {
-        if (response.status === 200) {
-          console.log('The Pokemon was successfully deleted.');
-        } else {
-          console.error('An error occurred while deleting the Pokemon.');
-        }
-      }),
-      catchError((error) => {
-        console.error(error);
-        return of(error);
-      })
-    );
+    return this.deleteRequest(id, 'Pokemon');
   }
 
   removeEgg(id: number) {
@@ -69,13 +57,7 @@ export class PokemonService {
   hatch(egg: Egg) {
     return this.http.post(`http://localhost:8082/egg?name=${egg.name}&no=${egg.no}&hatchingTime=${egg.hatchingTime}`, {observe: 'response'}).pipe(
       tap((response) => {
-        console.log(response); //je n'arrive pas à accéder au properties de l'objet response
-        //this.http.delete(`http://localhost:8081/delete_egg?id=${response.valueOf()}`)
-        /*if (response === 200) {
-          console.log('Egg was successfully add to hatching service.');
-        } else {
-          console.error('An error occurred while add egg to hatching service.');
-        }*/
+        console.log(response);
       }),
       catchError((error) => {
         console.error(error);
@@ -86,12 +68,16 @@ export class PokemonService {
   }
 
   addEgg(egg: Egg) {
-    return this.http.post<any>(`http://localhost:8081/add_egg?name=${egg.name}&no=${egg.no}&hatchingTime=${egg.hatchingTime}`, {observe: 'response'}).pipe(
+    return this.postRequest(`http://localhost:8081/add_egg?name=${egg.name}&no=${egg.no}&hatchingTime=${egg.hatchingTime}`)
+  }
+
+  private deleteRequest(id: number, prompt: string) {
+    return this.http.delete(`http://localhost:8081/delete_pokemon?id=${id}`, {observe: 'response'}).pipe(
       tap((response) => {
         if (response.status === 200) {
-          console.log('Egg was successfully added.');
+          console.log(`${prompt} was successfully deleted.`);
         } else {
-          console.error('An error occurred while adding egg.');
+          console.error(`An error occurred while deleting the ${prompt}.`);
         }
       }),
       catchError((error) => {
@@ -99,6 +85,18 @@ export class PokemonService {
         return of(error);
       })
     );
+  }
+
+  private postRequest(url: string) {
+    return this.http.post<any>(url, {}).pipe(
+      tap((response) => {
+        console.log(response.message);
+      }),
+      catchError((error) => {
+        console.error(error);
+        return of(error);
+      })
+    )
   }
 
 

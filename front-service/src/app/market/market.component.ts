@@ -23,22 +23,17 @@ export class MarketComponent implements OnInit {
   }
 
   BuyPokemon(pokemon: PokemonForSale) {
+    this.trainersService.transactionStatus = false;
     this.trainersService.subMoney(pokemon.price).subscribe(() => {
     });
     if (this.trainersService.transactionStatus) {
       this.marketService.removePokemon(pokemon.id).subscribe(() => {
         this.pokemonList = this.pokemonList.filter(p => p.id !== pokemon.id);
-        console.log("pokemon vendu");
       });
       let egg = this.PokemonForSaleToEgg(pokemon);
       this.pokemonService.addEgg(egg).subscribe(() => {
-        console.log("oeuf ajouté");
       });
-    } else {
-      console.log("pas assez d'argent");
     }
-
-
   }
 
   private callMarketService() {
