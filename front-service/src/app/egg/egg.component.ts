@@ -27,15 +27,12 @@ export class EggComponent implements OnInit {
   public hatch(egg: Egg) {
 
     this.pokemonService.hatch(egg).subscribe(() => {
-        console.log("oeuf = ", egg);
       }
     )
     this.pokemonService.removeEgg(egg.id).subscribe(() => {
-      console.log("oeuf = ", egg);
     });
 
     this.trainerService.addXP(10).subscribe(() => {
-      console.log(" + 10 xp ");
     });
   }
 }
