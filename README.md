@@ -16,3 +16,4 @@ Nous allons faire une application qui embarque un système comparable a Pokemon 
 
 # Front
 - Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+En cas de problème d'affichage, rafraichir la page.
