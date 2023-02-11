@@ -39,7 +39,7 @@ export class PokemonService {
   }
 
   removeEgg(id: number) {
-    return this.http.delete(`http://localhost:8081/delete_egg?id=${id}`, {observe: 'response'}).pipe(
+    return this.http.delete(`http://localhost:8081/deleteEgg?id=${id}`, {observe: 'response'}).pipe(
       tap((response) => {
         if (response.status === 200) {
           console.log('The Egg was successfully deleted.');
@@ -55,7 +55,7 @@ export class PokemonService {
   }
 
   hatch(egg: Egg) {
-    return this.http.post(`http://localhost:8082/egg?name=${egg.name}&no=${egg.no}&hatchingTime=${egg.hatchingTime}`, {observe: 'response'}).pipe(
+    return this.http.post(`http://localhost:8082/addEgg?name=${egg.name}&no=${egg.no}&hatchingTime=${egg.hatchingTime}`, {observe: 'response'}).pipe(
       tap((response) => {
         console.log(response);
       }),
@@ -68,7 +68,7 @@ export class PokemonService {
   }
 
   addEgg(egg: Egg) {
-    return this.postRequest(`http://localhost:8081/add_egg?name=${egg.name}&no=${egg.no}&hatchingTime=${egg.hatchingTime}`)
+    return this.postRequest(`http://localhost:8081/addEgg?name=${egg.name}&no=${egg.no}&hatchingTime=${egg.hatchingTime}`)
   }
 
   private deleteRequest(id: number, prompt: string) {

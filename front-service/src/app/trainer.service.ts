@@ -29,7 +29,7 @@ export class TrainerService {
 
   addMoney(price: number): Observable<Trainer> {
     //Request is not working
-    return this.http.put<any>(`http://localhost:8080/add_gold?id=1&amount=${price}`, {observe: 'response'}).pipe(
+    return this.http.put<any>(`http://localhost:8080/addGold?id=1&amount=${price}`, {observe: 'response'}).pipe(
       tap((response) => {
         if (response.status === 200) {
           console.log('Money was successfully added.');
@@ -47,17 +47,17 @@ export class TrainerService {
 
   subMoney(price: number): Observable<Trainer> {
     //Request is not working
-    return this.putRequest(`http://localhost:8080/remove_gold?id=1&amount=${price}`);
+    return this.putRequest(`http://localhost:8080/removeGold?id=1&amount=${price}`);
   }
 
   addXP(xp: number): Observable<Trainer> {
     //Request is not working
-    return this.putRequest(`http://localhost:8080/add_xp?id=1&amount=${xp}`);
+    return this.putRequest(`http://localhost:8080/addXp?id=1&amount=${xp}`);
 
   }
 
   addTrainer(trainer: Trainer) {
-    return this.postRequest(`http://localhost:8080/add_dresseur?name=${trainer.name}&gold=${trainer.gold}&xp=${trainer.xp}`);
+    return this.postRequest(`http://localhost:8080/addDresseur?name=${trainer.name}&gold=${trainer.gold}&xp=${trainer.xp}`);
   }
 
   private putRequest(url: string) {

@@ -15,7 +15,7 @@ public class DresseurController {
     @Autowired
     private DresseurService dresseurService;
 
-    @PostMapping("/add_dresseur")
+    @PostMapping("/addDresseur")
     public @ResponseBody Dresseur addDresseur(
             @RequestParam String name,
             @RequestParam Integer gold,
@@ -43,7 +43,7 @@ public class DresseurController {
         return dresseurService.getDresseur(id);
     }
 
-    @DeleteMapping("/delete_dresseur")
+    @DeleteMapping("/deleteDresseur")
     public @ResponseBody String deleteDresseur(
             @RequestParam Integer id) {
         // This returns a JSON or XML with the users
@@ -51,7 +51,7 @@ public class DresseurController {
         return "OK";
     }
 
-    @PutMapping("/add_gold")
+    @PutMapping("/addGold")
     public @ResponseBody Map<String, String> addGold(
             @RequestParam Integer id,
             @RequestParam Integer amount) {
@@ -60,8 +60,8 @@ public class DresseurController {
         return dresseurService.addGold(id, amount);
     }
 
-    @PutMapping("/add_xp")
-    public @ResponseBody Map<String, String> addXp(
+    @PutMapping("/addXp")
+    public @ResponseBody  Map<String, String> addXp(
             @RequestParam Integer id,
             @RequestParam Integer amount) {
         var response = dresseurService.addXp(id, amount);
@@ -69,7 +69,7 @@ public class DresseurController {
         return response;
     }
 
-    @PutMapping("/remove_gold")
+    @PutMapping("/removeGold")
     public @ResponseBody Map<String, String> removeGold(
             @RequestParam Integer id,
             @RequestParam Integer amount) {
